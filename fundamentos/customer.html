@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Na Chen">
+    <meta name="viewport" content="width = device.width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Formulario de Cliente</title>
+    
+</head>
+<body>
+
+<h1> Formulario de cliente</h1>
+<h2>Datos personales</h2>
+<form>
+<p>Id cliente <input type="number" name="customer_id" size="20"></p>
+<p>Id tienda <input type="number" name="store_id" size="20"></p>
+
+<p>Nombre: <input type="text" name="customer_name" size="20"></p>
+<p>Apellidos: <input type="text" name="customer_surname" size="20"></p>
+<p>Email: <input type="email" name="customer_email" size="30"></p>
+<p>Dirección: <input type="text" name="customer_address" size="30"></p>
+<p>Activo:</p>
+<input type="radio" name="active" 
+value="true" checked >Si<br>
+<input type="radio" name="active" 
+value="false" >No<br>
+
+<p>
+    <input type="submit" value="Enviar">
+    <input type="reset" value="Reset">
+</p>
+</form>
+
+</body>
+</html>
