@@ -3,34 +3,87 @@
 .error-msg{
     color: var(--error-color,red);
 }
-.grande{
-    font-size: 4em;
+.button {
+	display: inline-block;
+	border-radius: 3px;
+	padding: 7px 10px;
+	border: 1px solid #D5D5D5;
+	font: 700 8px/10px Helvetica, arial;
 }
-
-input:active {
-    border-color: red;
-    font-size:4em;
-}
-input[maxlength]{
-    background-color: var(--error-color, red);
+.button--state-login{
+    background-color: greenyellow;
     color:white;
+
+}
+.button--state-signup{
+    background-color: rgb(0, 204, 255);
+    color: white;
 }
 
-body{
-    color:navy;
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-#logo{
-    max-width: 120px;
-}
-body > header{
-    background-color: black;
-}
-header{
-    color: green!important;
-    background-color: beige;
-}
+.flex-container > header {
+    background-color: #bf88fd;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 30px;
+    flex:100%;
+  }
 
+
+
+
+.flex-item-left {
+    background-color: #c1e1f3;
+    margin: 10px;
+    padding:10px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    flex:50%;
+  }
+
+  .flex-item-right {
+    background-color: #ecf3c1;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 15px;
+    flex:50%;
+  }
+  .flex-item-center  {
+    background-color: #23eef5 !important;
+    color:royalblue;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 15px;
+    flex:100%;
+    
+  }
+ 
+  .flex-container > footer {
+    background-color: #f3c1e6;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 40px;
+  }
+
+  @media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+    }
+  }
 .pag-principal form{
     background-color: rgb(253,255,146)!important;
 }
@@ -40,6 +93,31 @@ header{
 
 .pag.formulario main{
     margin:10px;
+}
+
+input:active {
+    border-color: red;
+    font-size:4em;
+}
+
+
+
+body > header{
+    background-color: rgb(192, 186, 240);
+}
+header{
+    color: green!important;
+    background-color: beige;
+}
+
+input[type=submit]{
+ color:  white;
+ background-color: green;
+}
+
+input[type= reset]{
+    color : white;
+    background-color: rgb(218, 215, 49);
 }
 
 @media print {
@@ -62,9 +140,5 @@ header{
         display:none;
     }
 }
-.col-1{
-    grid-column: 1;
-}
-.col-2{
-    grid-column: 2;
-}
+
+

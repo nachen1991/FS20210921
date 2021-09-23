@@ -1,55 +1,82 @@
 
 <!DOCTYPE html>
-<html>
+<html lang ="es">
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Na Chen">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width = device.width, initial-scale=1.0">
+    <meta name="viewport" content="width = device.width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="theme/style.css" />
     <title>Videoclub</title>
     
 </head>
 <body class="pag-principal">
-<header>
-    <div>
+<div class = "flex-container">
+    <header>
+    
+        <div>
         
-        <h1> <img src="img/mini_logo.png"/> Videoclub Sakila </h1>
-    </div>
-            <nav>
+            <h1> <img id = "minilogo" src="img/mini_logo.png"/> Videoclub Sakila </h1>
+        </div>
+        <div>
+            <nav name="menu" class="flex-item-left">
             <a href="formulario_actor.html">Actors</a> |
             <a href="customer.html">Customers</a> |
             <a href="/films/">Films</a> |
             <a href="presentacion.html">Sobre mí</a> |
             </nav>
-            <form class="pag-principal form">
+            <form >
                 <input type="text" name="user" placeholder="Usuario">
                 <input type="password" name="password" placeholder="Contraseña">
-                <input type="submit" value="Login" >
+                <button class="button button--state-login">Login</button>
+                <button class="button button--state-signup">Sign Up</button>
             </form>
-        
- </header>   
-<main>
+            
+        </div>
+    
+    </header>   
+    <main>
+    
+    
     <section>
-        <header class="error-msg">
-            Novedades
+        
+    <div class = "flex-container">
+        <header class="flex-item-center">
+            Novedades y otros
         </header>
-        <article>
+        <article class="flex-item-left">
             <figure>
                 <source media="(min-width:768px)" srcset="https://picsum.photos/400?rnd=11">
                 <source media="(min-width:576px)" srcset="https://picsum.photos/300?rnd=12">
                 <img src="https://picsum.photos/200?rnd=1" alt="Lorem ipsum dolor">
+                <figcaption>Lore ipsum dolor</figcaption>
             </figure>
-            <figcaption>Lore ipsum dolor</figcaption>
+            <summary>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus modi placeat velit. Aspernatur repudiandae rem distinctio sit quam rerum quidem mollitia laborum natus, ab a fugit. Ea porro quo deleniti!
+            </summary>
         </article>
+        <article class="flex-item-right">
+            <figure>
+                <img id = "logo" src="img/logo.png"/>
+                <figcaption>Sakila</figcaption>
+            </figure>
+            <summary>
+                Bienvenidos al videoclub Sakila, aqui encontrareis todas las peliculas que existen en el mundo
+            </summary>
+        </article>
+    </div>
     </section>
-<p>Bienvenidos al videoclub Sakila, aqui encontrareis todas las peliculas que existen en el mundo</p>
-</main>
-<footer>
-<div>
-
-
+    
+    </main>
+    <footer>
+    
+        <div class="error-msg">
+        &copy; 2021 Todos los derechos reservados | <a href="/aviso-legal" target="_blank">Aviso Legal</a> | <a
+            href="/politica-de-privacidad" target="_blank">Política de Privacidad</a> | <a
+            href="/politica-de-cookies" target="_blank">Política de Cookies</a>
+        </div>
+    </footer>
 </div>
-</footer>
 </body>
 </html>
