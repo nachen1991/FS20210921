@@ -6,11 +6,11 @@
     <meta name="author" content="Na Chen">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width = device.width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="theme/style.css" />
     <title>Videoclub</title>
     
 </head>
-<body>
+<body class="pag-principal">
 <header>
     <div>
         
@@ -22,17 +22,25 @@
             <a href="/films/">Films</a> |
             <a href="presentacion.html">Sobre mí</a> |
             </nav>
+            <form class="pag-principal form">
+                <input type="text" name="user" placeholder="Usuario">
+                <input type="password" name="password" placeholder="Contraseña">
+                <input type="submit" value="Login" >
+            </form>
         
  </header>   
 <main>
     <section>
-        <header>
-
+        <header class="error-msg">
+            Novedades
         </header>
         <article>
             <figure>
-
+                <source media="(min-width:768px)" srcset="https://picsum.photos/400?rnd=11">
+                <source media="(min-width:576px)" srcset="https://picsum.photos/300?rnd=12">
+                <img src="https://picsum.photos/200?rnd=1" alt="Lorem ipsum dolor">
             </figure>
+            <figcaption>Lore ipsum dolor</figcaption>
         </article>
     </section>
 <p>Bienvenidos al videoclub Sakila, aqui encontrareis todas las peliculas que existen en el mundo</p>
