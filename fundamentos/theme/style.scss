@@ -1,0 +1,47 @@
+@import url('variables.css');
+@import url('../node_modules/@fortawesome/fontawesome-free/css/all.css');
+@font-face{
+    font-family: "Principal";
+    src: url('Honey\ Baby.ttf') format('truetype'), 
+        url('Honey\ Baby.woff') format('woff'), 
+        url('Honey\ Baby.woff2') format('woff'), 
+        url('Honey\ Baby.otf') format('opentype');
+}
+@font-face{
+    font-family: "Titulo";
+    src: url('cinema_st.ttf') format('truetype');
+}
+
+$propiedad: color;
+$ancho: min-width;
+$ancho-definido:100px;
+$modulo: articulo;
+$fontBase:12pt;
+
+
+h1{
+    font: {
+
+       size: $fontBase * 4;
+       family: 'Principal';
+
+    }
+}
+
+@mixin Principal (){
+
+    background-color: var(--principal-background-color, white);
+    $propiedad: var(--principal-text-color, black);
+    margin: 0;
+    font-family: 'Principal';
+   
+}
+
+body{
+    @include Principal();
+}
+
+
+
+
+
