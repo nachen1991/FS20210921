@@ -1,0 +1,125 @@
+@import url('variables.css');
+
+.error-msg{
+    color: var(--error-color,red);
+}
+.button {
+	display: inline-block;
+	border-radius: 3px;
+	padding: 7px 10px;
+	border: 1px solid #D5D5D5;
+	font: 700 8px/10px Helvetica, arial;
+}
+.button--state-login{
+    background-color: greenyellow;
+    color:white;
+
+}
+.button--state-signup{
+    background-color: rgb(0, 204, 255);
+    color: white;
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.flex-container > header {
+    background-color: #bf88fd;
+    font-size: 30px;
+    flex:100%;
+  }
+
+.cabecera__nav {
+    background-color: #c1e1f3;
+    font-size: 20px;
+    flex:50%;
+  }
+
+  .cuerpo__articulo {
+    background-color: #ecf3c1;
+    font-size: 15px;
+    flex:50%;
+  }
+  .cuerpo__cabecera  {
+    background-color: #23eef5 !important;
+    color:royalblue;
+    font-size: 15px;
+    flex:100%;
+    
+  }
+ 
+  .flex-container > footer {
+    background-color: #f3c1e6;
+    font-size: 40px;
+  }
+
+  @media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+    }
+  }
+.pag-principal form{
+    background-color: rgb(253,255,146)!important;
+}
+.pag-formulario form{
+    background-color: rgb(146,204,255);
+}
+
+.pag.formulario main{
+    margin:10px;
+}
+
+input:active {
+    border-color: red;
+    font-size:4em;
+}
+
+
+
+body > header{
+    background-color: rgb(192, 186, 240);
+}
+header{
+    color: green!important;
+    background-color: beige;
+}
+
+input[type=submit]{
+ color:  white;
+ background-color: green;
+}
+
+input[type= reset]{
+    color : white;
+    background-color: rgb(218, 215, 49);
+}
+
+@media print {
+    input[type=submit], input[type=button], input[type=reset]{
+        display:none;
+    }
+    body > header{
+        display:none;
+    }
+    body{
+        font-size: 10pt;
+    }
+    img{
+        max-width: 200px;
+    }
+}
+
+@media screen and(max-width:350px){
+    img{
+        display:none;
+    }
+}
+
+

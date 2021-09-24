@@ -9,7 +9,7 @@
   "author": "Na Chen",
   "license": "ISC",
   "dependencies": {
-    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "bootstrap": "^5.1.1",
     "free": "^1.0.0",
     "save": "^2.4.0"
