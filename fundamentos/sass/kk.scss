@@ -5,3 +5,27 @@ body{
         background-color:aqua;
     }
 }
+
+@mixin elementosPrincipales($padding: 10px){
+
+    display:flex;
+    flex-flow: row,wrap;
+    background-color: var(--secundario-background-color, black);
+    color: var(--secundario-background-color, black);
+    padding: 10px;
+    align-items:stretch;
+
+    &__algo{
+        margin-left:5px;
+    }
+}
+
+.cabecera-principal{
+    @include elementosPrincipales();
+    &__menu{
+        flex-grow:1;
+        margin-left:5px;
+        margin-right:5px;
+    }
+
+}
