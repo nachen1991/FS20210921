@@ -1,4 +1,4 @@
-describe('Demos de las pruebas', function(){
+/*describe('Demos de las pruebas', function(){
     describe('Calculos', function(){
         it('suma 2 + 2', function(){
             let a = 2; b = 2;
@@ -27,7 +27,7 @@ describe('Demos de las pruebas', function(){
         describe('sumas', function(){
             [[2,2,4], [-1,2,1], [2,-1,1], [0,0,0]].forEach(caso =>{
                 it(`Suma ${caso[0]} mas ${caso[1]} debe ser ${caso[2]}`, function(){
-                    expect(suma(caso[0], caso[1])).toBeCloseTo(caso[2],10)
+                    expect(suma(caso[0], caso[1])).toBe(caso[2])
                 })
 
             });
@@ -68,7 +68,7 @@ var soyGlobal='algo'
 var count = 0;
 
 fdescribe('Sintaxis', function(){
-    describe('Ejemplo 1', function(){
+    xdescribe('Operadores', function(){
         it('Operadores', function(){
             function kk() {
                 var i = 1;
@@ -98,8 +98,19 @@ fdescribe('Sintaxis', function(){
 
         })
     })
+
+    xdescribe('colecciones', function(){
+        it('Multiples', function(){
+            let t = [10, 20, 30];
+            let o = { x : 10, y : 20};
+            o.x = 20
+
+            expect(t.length).toEqual(8)
+            expect(t[4]).toEqual(8)
+        })
+
+    })
+
 })
 
-describe('otra suite', function(){
-        
-})
+*/

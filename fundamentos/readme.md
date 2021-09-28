@@ -17,3 +17,6 @@ Lanzar servidor:
  - karma start
 
 
+Inicio test generico:
+ - npm test (anteriormente ya definido en package.json)
+
