@@ -31,7 +31,7 @@ describe('Pruebas', function(){
                 }
                 if(num == numero){
                     window.alert("Acertaste! el numero correcto es el" + numero);
-                
+                    break;
                 }
             }
             window.alert("Lo siento, el número elegido correcto es el: " + numero)
