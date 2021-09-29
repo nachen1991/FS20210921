@@ -81,7 +81,12 @@ describe('Pruebas', function(){
 
     describe('nif', function(){
 
+        it('Verificar nif', function(){
+            let cadena = "12345678Y"
+            expect(checknif(cadena)).toBeTrue()
+        })
 
+        
 
     })
 
