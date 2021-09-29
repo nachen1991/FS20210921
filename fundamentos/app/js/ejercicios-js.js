@@ -4,11 +4,11 @@ function random(min, max){
 
 function array(num){
    let array = new Array();
-    for(let i = 0;i<=num - 1;i++){
-    array[num] = [0];    
+    for(var i = 0;i<=num - 1;i++){
+    array[i] = [0];    
 
     }
-    return array[num];
+    return array[i];
     
 }
 
