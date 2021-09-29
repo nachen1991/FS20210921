@@ -24,13 +24,15 @@ function primos(num){
     return num !== 1;
 }
 
-//function checknif(cad){
-//    let result = false;
-//    if ( cad.toMatch("^[0-9]{8}[A-Za-z]{1}$")){
-//        result = true;
-//    }
-//    return result;
-//}
+/*function checknif(cad){    
+    let result = false;
+    
+   if ( cad.length === 8 && !cad.charAt(cad.length -1).isNaN()){
+
+        result = true;
+    }
+    return result;
+}*/
 function reverse(c){
     return c.split("").reverse().join("");
     
