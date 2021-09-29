@@ -45,7 +45,6 @@ describe('Pruebas', function(){
             let num = 2;
             let result = array (num);
             return result;
-           
 
         })
     })
