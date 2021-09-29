@@ -83,7 +83,8 @@ describe('Pruebas', function(){
 
         it('Verificar nif', function(){
             let cadena = "12345678Y"
-            expect(checknif(cadena)).toBeTrue()
+            
+            expect(cadena).toMatch("^[0-9]{8}[A-Za-z]{1}$")
         })
 
         
