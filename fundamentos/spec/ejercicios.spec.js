@@ -39,6 +39,17 @@ describe('Pruebas', function(){
         }) 
     })
 
+    describe('array', function(){
+
+        it('Generador de array',function(){
+            let num = 2;
+            let result = array (num);
+            return result;
+           
+
+        })
+    })
+
     describe('primos', function(){
 
         it('numeros primos', function(){
@@ -61,9 +72,36 @@ describe('Pruebas', function(){
         
         })
 
+        it('es primo', function(){
+            let num = 7
+            expect(primos(num)).toBeTrue()
+        })
+
 
     })
 
+    describe('nif', function(){
+
+
+
+    })
+
+    describe('Palindromo', function(){
+        ['ana', 'Sometamos o matemos', 'Isaac no ronca asi', 'Ali tomo tila'].forEach(caso =>{
+
+            it(`Palindromo valido: ${caso}`, () => {
+                let result = validaPalindromo(caso);
+                expect(result).toBeTrue()
+            });
+    
+            it('palindromo invalido', () => {
+                let result = validaPalindromo(caso);
+                expect(result).toBeFalse()
+            });
+        })
+       
+
+    })
     
     
 
