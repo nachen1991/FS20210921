@@ -9,41 +9,28 @@ describe('Pruebas', function(){
     
             result = random(a,b)
 
-            window.alert("El numero random es:" + result)
+            let expresion = /\d+/g;
+
+            expect(result).toMatch(expresion)
+ 
     
         })
 
-        it('adivina el numero', function(){
+        xit('adivina el numero', function(){
             let a = 0; b = 100;
-              
-
-            let numero = random (a,b);
             
-            
-            for(let val = 1;val <11;val++){
-                var num = prompt("Inserta un numero del 1 al 100",0);
-                if(num > numero ){  
-                    window.alert("Fallaste!El numero es menor que " + num);
-                }
-                if(num < numero){
-                    
-                    window.alert("Fallaste!El numero es mayor que " + num);
-                }
-                if(num == numero){
-                    window.alert("Acertaste! el numero correcto es el" + numero);
-                    break;
-                }
-            }
-            window.alert("Lo siento, el número elegido correcto es el: " + numero)
+            let result = adivina(a,b);
 
+            expect(result).toThrow()
+            
         }) 
     })
 
-    describe('array', function(){
+    describe('generar array', function(){
 
         it('Generador de array',function(){
             let num = 2;
-            let result = array (num);
+            let result = genArray (num);
             return result;
 
         })
@@ -53,27 +40,30 @@ describe('Pruebas', function(){
 
         it('numeros primos', function(){
     
-            let result;
-            let array = new Array();
+            let a = 2;
+            let b = 50;
+            let num = 4;
+            let result = dameprimos(num,a,b);
+
+            expect(result).toEqual([2,3,5,7]);
            
-           let nprimos = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 
-                83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 
-                179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 
-                277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 
-                397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499]
-           var num = prompt("¿Cuantos numeros primos quieres?",0);
-            for(var i = 0;i < num;i++){
-                   array.push(nprimos[i]);
-            
-            }
-            window.alert("Los " + num + " numeros primos son: " + array);
+        })
+
+        it('numeros primos2', function(){
+    
+            let num = 4;
+            let result = dameprimos2(num);
+           
+           //var num = prompt("¿Cuantos numeros primos quieres?",0);
+            expect(result).toEqual([2,3,5,7]);
             
         
         })
 
         it('es primo', function(){
             let num = 7
-            expect(primos(num)).toBeTrue()
+
+            expect(esprimo(num)).toBeTrue()
         })
 
 
@@ -83,8 +73,8 @@ describe('Pruebas', function(){
 
         it('Verificar nif', function(){
             let cadena = "12345678Y"
-            
-            expect(cadena).toMatch("^[0-9]{8}[A-Za-z]{1}$")
+
+            expect(cadena).toMatch(/^[0-9]{8}[A-Za-z]{1}$/)
         })
 
         
