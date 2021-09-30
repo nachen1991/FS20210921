@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="theme/calcstyle.css" />
+    <title>Calculadora JS</title>
+    <style>
+      .errorMsg {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculadora">
+      <h3>Calculadora</h3>
+
+      <table>
+        <tr>
+          <td>
+            <input
+              type="textfield"
+              class="cuerpo__screen"
+              id="screentext"
+              value="0"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="button" value="C" class="borrados" id="c" />
+            <input type="button" value="CE" class="borrados" id="ce" />
+            <input type="button" value="R" class="borrados" id="retroceso" />
+            <input type="button" value="/" class ="operaciones" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="button" value="7" class="numeros" id="n7" />
+            <input type="button" value="8" class="numeros" id="n8" />
+            <input type="button" value="9" class="numeros" id="n9" />
+            <input type="button" value="*" class="operaciones" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="button" value="4" class="numeros" id="n4" />
+            <input type="button" value="5" class="numeros" id="n5" />
+            <input type="button" value="6" class="numeros" id="n6" />
+            <input type="button" value="-" class="operaciones" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="button" value="1" class="numeros" id="n1" />
+            <input type="button" value="2" class="numeros" id="n2" />
+            <input type="button" value="3" class="numeros" id="n3" />
+            <input type="button" value="+" class="operaciones" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input
+              type="button"
+              value="+/-"
+              class="operaciones"
+              id="cambiosigno"
+            />
+            <input type="button" value="0" class="numeros" id="n0" />
+            <input type="button" value="," class="numeros" id="coma" />
+            <input type="button" value="=" class="operaciones" id="=" />
+          </td>
+        </tr>
+      </table> 
+
+
+    </div>
+    <script src="js/calc.js"></script>
+    <script>
+        
+      (function () {
+        let calculadora = new Calculadora();
+
+        
+        document.querySelectorAll('.numeros').forEach(tag => {
+          tag.addEventListener('click', ev => {
+            calculadora.ponerdigito(ev.target.value);
+            screentext.value = calculadora.screen;
+          })
+        })
+      
+
+        document.querySelectorAll('.operaciones').forEach((tag) => {
+            tag.addEventListener('click', ev => {
+                calculadora.operaciones(ev.target.value);
+                screentext.value = calculadora.screen;
+          })
+
+        })
+
+        cambiosigno.addEventListener('click', ev => {
+            calculadora.cambiosigno(ev.target.value);
+            screentext.value = calculadora.screen;
+            })
+
+        
+        c.addEventListener('click', ev =>{
+            calculadora.borradoTotal(ev.target.value);
+            screentext.value = calculadora.screen;
+        })
+        
+       
+        retroceso.addEventListener('click', ev =>{
+            calculadora.retroceso(ev.target.value);
+            screentext.value = calculadora.screen;
+        })
+
+        })()
+    </script>
+  </body>
+</html>

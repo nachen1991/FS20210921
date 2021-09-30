@@ -1,0 +1,26 @@
+.calculadora { 
+    border: 3px blue ridge; 
+    width: 220px;
+    text-align: center;
+    background-color: #8ed9ee; }
+
+
+.cuerpo__screen { 
+    width: 155px; 
+    border: 2px black solid; 
+    text-align: right; 
+      position: relative; left: 23px;  
+      padding: 0px 5px;
+      background-color: white; font-family: "Open Sans"; 
+      overflow: hidden;}
+
+
+.calculadora [type=button] { 
+    position: relative; left: 20px; 
+    width: 35px;
+    height: 35px;
+    padding: 10;  
+}
+
+
+
