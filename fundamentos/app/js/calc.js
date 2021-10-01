@@ -38,31 +38,31 @@ class Calculadora {
     this.screen = this.acum.toString();
   }
 
-  cambiosigno(num) {
-    let valor = parseFloat(num);
-    valor = -valor;
-    num = valor.toString();
-    this.screen = num;
-    
+  cambiosigno() {
+  //   let valor = parseFloat(this.screen);
+  //   valor = -valor;
+  //   let char= valor.toString();
+  //  this.screen = char;
+    this.screen = (-this.screen).toString();
+    if(this.reset){
+      this.acum = -this.acum;
+    }
   }
 
   
-  retroceso(cad) {
-    let tam = cad.length;
-    let char = cad.substr(tam -1, tam);
-    cad = cad.substr(0, tam - 1);
+  retroceso() {
+    let tam = this.screen.length
+    this.screen= this.screen.substr(0, tam - 1);
     
-    if (cad == "" || cad.length < 1) {
-      cad = "0";
+    if (this.screen == "") {
+      this.screen = "0";
     }
-
-    this.screen = cad;
+    
   }
 
-  borradoTotal(cad){ 
-    cad = "0";
-    this.op = '+';
-    this.reset = true;
-    this.screen = cad;
+  borradoTotal(){ 
+    this.screen = "0";
+    this.acum = 0;
+   
   }
 }
