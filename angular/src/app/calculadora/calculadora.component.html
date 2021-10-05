@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora JS</title>
+
+  </head>
+  <body>
+    <div class="calculadora">
+      <h3>Calculadora</h3>
+
+      <table>
+        <tr>
+          <td>
+            <input
+              type="text"
+              class="cuerpo__screen"
+              [(ngModel)]="screen"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="button" value="C" class="borrados" (click)="inicia()"/>
+            <input type="button" value="CE" class="borrados" id="ce" />
+            <input type="button" value="R" class="borrados"  (click)="borrar()" />
+            <input type="button" value="/" class ="operaciones" (click)="Operaciones('/')"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="button" value="7" class="numeros" (click)="ponerDigito('7')" />
+            <input type="button" value="8" class="numeros" (click)="ponerDigito('8')"/>
+            <input type="button" value="9" class="numeros" (click)="ponerDigito('9')" />
+            <input type="button" value="*" class="operaciones" (click)="Operaciones('*')" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="button" value="4" class="numeros" (click)="ponerDigito('4')" />
+            <input type="button" value="5" class="numeros" (click)="ponerDigito('5')"/>
+            <input type="button" value="6" class="numeros" (click)="ponerDigito('6')" />
+            <input type="button" value="-"  (click)="Operaciones('-')"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="button" value="1" class="numeros" (click)="ponerDigito('1')" />
+            <input type="button" value="2" class="numeros" (click)="ponerDigito('2')" />
+            <input type="button" value="3" class="numeros" (click)="ponerDigito('3')" />
+            <input type="button" value="+" class="operaciones" (click)="Operaciones('+')" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input
+              type="button"
+              value="+/-"
+              class="operaciones"
+              (click)="cambiaSigno()"
+            />
+            <input type="button" value="0" class="numeros" (click)="ponerDigito('0')" />
+            <input type="button" value="," class="numeros" (click)="ponComa()" />
+            <input type="button" value="=" class="operaciones" (click)="Operaciones('=')" />
+          </td>
+        </tr>
+      </table>
+
+
+    </div>
+
+  </body>
+</html>
