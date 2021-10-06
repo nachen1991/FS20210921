@@ -6,20 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calculadora.component.scss']
 })
 export class CalculadoraComponent implements OnInit {
-  private acum: number;
-  private operador : string;
-  private reset : boolean;
-  screen : string;
+  private acum: number = 0;
+  private operador : string = '+';
+  private reset = true;
+  screen : string = '0';
 
 
   constructor() {
-    this.acum = 0;
-    this.operador = '+';
-    this.reset = true;
-    this.screen = '0';
+    this.inicia();
    }
 
-	inicia() {
+
+  //  get Pantalla(): string{
+  //    return this.screen;
+  //  }
+
+	inicia() :void{
 		this.acum = 0;
 		this.operador = '+';
 		this.screen = '0';
@@ -28,7 +30,7 @@ export class CalculadoraComponent implements OnInit {
 
 
 
-  ponerDigito(num: string){
+  ponerDigito(num: string):void{
     if (this.screen == '0'|| this.reset) {
       this.screen  = num;
       this.reset = false;
@@ -38,7 +40,7 @@ export class CalculadoraComponent implements OnInit {
     }
   }
 
-  Operaciones(operacion : string) {
+  Operaciones(operacion : string): void {
     if ('+-*/='.indexOf(operacion) == -1) return;
     let valor = parseFloat(this.screen);
     switch (this.operador) {
@@ -61,7 +63,7 @@ export class CalculadoraComponent implements OnInit {
   }
 
 
-  ponComa () {
+  ponComa ():void {
 		if (this.reset) {
 			this.screen= '0.';
 			this.reset = false;
@@ -71,7 +73,7 @@ export class CalculadoraComponent implements OnInit {
 			console.warn('Ya está la coma');
 	};
 
-  borrar() {
+  borrar():void {
 		if (this.reset || this.screen.length == 1 || (this.screen.length == 2 && this.screen.startsWith('-'))) {
 			this.screen = '0';
 			this.reset = true;
@@ -80,7 +82,7 @@ export class CalculadoraComponent implements OnInit {
 				this.screen.length - 1);
 	};
 
-  cambiaSigno() {
+  cambiaSigno():void {
 		this.screen = (-this.screen).toString();
 		if (this.reset) {
 			this.acum = -this.acum;
