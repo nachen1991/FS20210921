@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <title>Angular</title>
-</head>
-<body>
+
 <header class ="cabecera-principal">
   <img id="logo" src="./assets/mini-logo.png" alt="Logotipo de ViewNext">
   <button class ="cabecera-principal__button" *ngFor="let item of menu; let indice=index;" (click)="seleccionar(indice)">{{item.texto}}</button>
+  <input type="button" class="cabecera-principal__notifications" value="Error" (click)="vm.add ('Esto es una notificación de error')" >
+  <input type="button" class="cabecera-principal__notifications" value="Warn" (click)="vm.add ('Esta notificación es un aviso', vm.NotificationType.warn)" >
 </header>
-
+<app-notification></app-notification>
 <div class="container-fluid">
   <ng-container *ngComponentOutlet="actual"></ng-container>
 </div>
 
-</body>
-</html>
+

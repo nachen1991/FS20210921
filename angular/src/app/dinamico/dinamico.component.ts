@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CalculadoraComponent } from '../calculadora/calculadora.component';
+import { NotificationService } from '../common-services';
 import { DemosComponent } from '../demos/demos.component';
 import { HomeComponent } from '../main';
 
@@ -17,7 +18,7 @@ export class DinamicoComponent implements OnInit {
 
   actual = this.menu[0].componente;
 
-  constructor() { }
+  constructor(public vm: NotificationService) { }
 
   seleccionar(indice: number): void {
     this.actual = this.menu[indice].componente;
