@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoggerService } from 'src/lib/my-core';
 
 @Component({
   selector: 'app-calculadora',
@@ -12,7 +13,7 @@ export class CalculadoraComponent implements OnInit {
   screen : string = '0';
 
 
-  constructor() {
+  constructor(private log: LoggerService) {
     this.inicia();
    }
 
@@ -70,7 +71,7 @@ export class CalculadoraComponent implements OnInit {
 		} else if (this.screen.indexOf('.') === -1) {
 			this.screen += '.';
 		} else
-			console.warn('Ya está la coma');
+			this.log.warn('Ya está la coma');
 	};
 
   borrar():void {
