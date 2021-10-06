@@ -1,0 +1,17 @@
+.cabecera-principal {
+
+  flex-flow: row wrap;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  align-items: stretch;
+  position: sticky;
+  top: 0;
+  &__button{
+    padding : 2px;
+    margin: 10px;
+    background-color: black;
+    color:white;
+    border: 1px;
+  }
+}
