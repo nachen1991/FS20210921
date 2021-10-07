@@ -2,7 +2,7 @@
 
 <header class ="cabecera-principal">
   <img id="logo" src="./assets/mini-logo.png" alt="Logotipo de ViewNext">
-  <button class ="cabecera-principal__button" *ngFor="let item of menu; let indice=index;" (click)="seleccionar(indice)">{{item.texto}}</button>
+  <button class ="cabecera-principal__button" *ngFor="let item of menu; let indice=index;" (click)="seleccionar(indice)"><i [class]="item.icono"></i>{{item.texto}}</button>
   <input type="button" class="cabecera-principal__notifications" value="Error" (click)="vm.add ('Esto es una notificación de error')" >
   <input type="button" class="cabecera-principal__notifications" value="Warn" (click)="vm.add ('Esta notificación es un aviso', vm.NotificationType.warn)" >
 </header>

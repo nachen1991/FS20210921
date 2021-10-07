@@ -38,3 +38,21 @@ Ejercicios
 * Crear una función que devuelva un determinado número de números primos.
 * Crear una función que valide un NIF
 * Definir una función que determine si la cadena de texto que se le pasa como parámetro es un palíndromo, es decir, si se lee de la misma forma desde la izquierda y desde la derecha. Ejemplo de palíndromo complejo: "La ruta nos aporto otro paso natural".
+
+### Objetos
+
+1. Crear la fncion constructora del juego Adivina el número.
+2. Crear la clase del juego Adivina el Número.
+
+
+####DOM
+
+1. Calculadora.
+2. Validad formulario de clientes.
+
+## Angular
+
+1. Reproducir el formulario de Clientes en el componente ClienteFormulario
+2. Crear módulo CommonComponent
+    a. Crear componente FormButtons con los botones de Enviar y Volver(@output)
+    b. Crear componente ShowErrorsMessages que muestre los errores de validación.

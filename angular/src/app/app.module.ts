@@ -13,6 +13,8 @@ import { CommonServicesModule } from './common-services';
 import { SecurityModule } from './security';
 import { environment } from 'src/environments/environment';
 import { FormularioComponent } from './formulario/formulario.component';
+import { ClienteFormularioComponent } from './cliente-formulario/cliente-formulario.component';
+import { CommonComponentsModule } from './common-components';
 
 @NgModule({
   declarations: [
@@ -21,10 +23,13 @@ import { FormularioComponent } from './formulario/formulario.component';
     DinamicoComponent,
     CalculadoraComponent,
     FormularioComponent,
+    ClienteFormularioComponent,
+
+
   ],
   imports: [
     BrowserModule, FormsModule,
-    AppRoutingModule, MyCoreModule, MainModule, CommonServicesModule, SecurityModule,
+    AppRoutingModule, MyCoreModule, MainModule, CommonServicesModule, SecurityModule, CommonComponentsModule,
   ],
   providers: [
     LoggerService,

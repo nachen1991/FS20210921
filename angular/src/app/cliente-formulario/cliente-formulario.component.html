@@ -1,0 +1,60 @@
+<div>
+  <input type="button" value="add" (click)="vm.add()" >|
+  <input type="button" value="edit" (click)="vm.edit()" >
+</div>
+<form #miForm="ngForm" class="form form--col4">
+  <div>
+  <label for="customer_id">Código Cliente</label><br>
+  <input type="number" id="customer_id" name="customer_id"  [(ngModel)]="vm.Elemento.customer_id" #id="ngModel" required min="0"><output
+      class="error-msg" id="customer_idErr" hidden></output>
+    </div>
+  <div>
+  <label for="store_id">Tienda</label><br>
+  <select id="store_id" name="store_id" [(ngModel)]="vm.Elemento.store_id" #id="ngModel" required min.value="1">
+      <option value="item" *ngFor="let item of Lista">{{item}}</option>
+  </select>
+  </div>
+  <div>
+  <label for="nombre">Nombre: </label><br>
+  <input type="text" id ="nombre" name="nombre" [(ngModel)]="vm.Elemento.nombre" #nombre="ngModel" required minlength="2" maxlength="10">
+  </div>
+  <div>
+  <label for="apellidos">Apellidos: </label><br>
+  <input type="text" id ="apellidos" name="apellidos" [(ngModel)]="vm.Elemento.apellidos" #apellidos="ngModel" minlength="2" maxlength="10">
+
+  </div>
+  <div>
+  <label for="correo">Correo: </label><br>
+  <input type="email" id ="correo" name="correo" [(ngModel)]="vm.Elemento.correo" #correo="ngModel"
+          maxlength="100" email>
+  </div>
+  <div>
+  <label for="address_id">Dirección: </label><br>
+  <div class="field__radio">
+      <input type="radio" id="address_id" name="address_id" [(ngModel)]="vm.Elemento.direccion" #direccion="ngModel"checked value="1">
+      Casa
+      <input type="radio" name="address_id" value="2">
+      Trabajo
+  </div>
+  </div>
+  <div>
+  <label for="active">Activo: </label><br>
+  <input type="checkbox" id="active" name="active" value="true" [(ngModel)]="vm.Elemento.activo" #activo="ngModel" checked>
+  </div>
+  <div>
+  <label for="create_date">F. Creación</label><br>
+  <input type="date" id="create_date" name="create_date" [(ngModel)]="vm.Elemento.f_creacion" #f_creacion="ngModel" required>
+  </div>
+  <div>
+  <label for="last_update">Última modificacion</label><br>
+  <input type="date" id="last_update" name="last_update"[(ngModel)]="vm.Elemento.u_modificacion" #u_modificacion="ngModel" required >
+  </div>
+  <div>
+  <label for="dni">DNI: </label><br>
+  <input type="text" id ="dni" name="dni" [(ngModel)]="vm.Elemento.dni" #dni="ngModel" minlength="2" maxlength="9">
+  </div>
+  <br>
+  <div>
+ <app-form-buttons></app-form-buttons>
+  </div>
+</form>
