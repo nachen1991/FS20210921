@@ -52,7 +52,16 @@ Ejercicios
 
 ## Angular
 
-1. Reproducir el formulario de Clientes en el componente ClienteFormulario
-2. Crear módulo CommonComponent
-    a. Crear componente FormButtons con los botones de Enviar y Volver(@output)
-    b. Crear componente ShowErrorsMessages que muestre los errores de validación.
+1. Reproducir la calculadora
+2. Reproducir el formulario de Clientes en el componente ClienteFormulario
+3. Crear módulo CommonComponent (export, import)
+
+    a. Crear componente FormButtons con los botones de Enviar y Volver (@output: send, cancel - @input: send-disabled)
+
+    b. Crear componente ShowErrorsMessages que muestre los errores de validación (@input: errors)
+4. Convertir ShowErrorsMessages en una directiva
+5. Crear directivas de validación:
+
+    - IBAN, 
+    - greater-than, 
+    - before, after, future, futureOrPresent, past, ...

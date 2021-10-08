@@ -3,11 +3,12 @@
   <input type="button" value="edit" (click)="vm.edit()" >
   <input type="button" value="delete" (myWinConfirm)="vm.delete()" myWinConfirmMessage="¿Seguro?">
 </div>
-<form #miForm="ngForm">
+<form #miForms="ngForm">
   <div>
   <label for="customer_id">Código Cliente</label><br>
   <input type="number" id="customer_id" name="customer_id"  [(ngModel)]="vm.Elemento.customer_id" #customer_id="ngModel" required min="0">
-  <errors-messages [message]="customer_id.errors"></errors-messages>
+  <!-- <errors-messages [message]="customer_id.errors"></errors-messages> -->
+  <output class="error" [showErrors]="customer_id.errors"></output>
     </div>
   <div>
   <label for="store_id">Tienda</label><br>
@@ -18,18 +19,22 @@
   <div>
   <label for="nombre">Nombre: </label><br>
   <input type="text" id ="nombre" name="nombre" [(ngModel)]="vm.Elemento.nombre" #nombre="ngModel" required minlength="2" maxlength="10">
-  <errors-messages [message]="nombre.errors"></errors-messages>
+  <!-- <errors-messages [message]="nombre.errors"></errors-messages> -->
+  <output class="error" [showErrors]="nombre.errors"></output>
+  {{nombre.errors | json}}
 </div>
   <div>
   <label for="apellidos">Apellidos: </label><br>
   <input type="text" id ="apellidos" name="apellidos" [(ngModel)]="vm.Elemento.apellidos" #apellidos="ngModel" minlength="2" maxlength="10">
-  <errors-messages [message]="apellidos.errors"></errors-messages>
+  <!-- <errors-messages [message]="apellidos.errors"></errors-messages> -->
+  <output class="error" [showErrors]="apellidos.errors"></output>
   </div>
   <div>
   <label for="correo">Correo: </label><br>
   <input type="email" id ="correo" name="correo" [(ngModel)]="vm.Elemento.correo" #correo="ngModel"
           maxlength="100" email>
-  <errors-messages [message]="correo.errors"></errors-messages>
+  <!-- <errors-messages [message]="correo.errors"></errors-messages> -->
+  <output class="error" [showErrors]="correo.errors"></output>
   </div>
   <div>
   <label for="address_id">Dirección: </label><br>
@@ -46,20 +51,25 @@
   </div>
   <div>
   <label for="create_date">F. Creación</label><br>
-  <input type="date" id="create_date" name="create_date" [(ngModel)]="vm.Elemento.f_creacion" #f_creacion="ngModel" required>
-  <errors-messages [message]="f_creacion.errors"></errors-messages>
+  <input type="date" id="create_date" name="create_date" [(ngModel)]="vm.Elemento.f_creacion" #f_creacion="ngModel" required before='2021-10-08'>
+  <!-- <errors-messages [message]="f_creacion.errors"></errors-messages> -->
+  <output class="error" [showErrors]="f_creacion.errors"></output>
+  {{f_creacion.errors | json}}
 </div>
   <div>
   <label for="last_update">Última modificacion</label><br>
-  <input type="date" id="last_update" name="last_update"[(ngModel)]="vm.Elemento.u_modificacion" #u_modificacion="ngModel" required >
-  </div>
+  <input type="date" id="last_update" name="last_update"[(ngModel)]="vm.Elemento.u_modificacion" #u_modificacion="ngModel" required  after="2021-10-10">
+  <output class="error" [showErrors]="u_modificacion.errors"></output>
+  {{u_modificacion.errors | json}}
+</div>
   <div>
   <label for="dni">DNI: </label><br>
-  <input type="text" id ="dni" name="dni" [(ngModel)]="vm.Elemento.dni" #dni="ngModel" minlength="2" maxlength="9">
-  <errors-messages [message]="dni.errors"></errors-messages>
+  <input type="text" id ="dni" name="dni" [(ngModel)]="vm.Elemento.dni" #dni="ngModel" minlength="2" maxlength="9" >
+  <!-- <errors-messages [message]="dni.errors"></errors-messages> -->
+  <output class="error" [showErrors]="dni.errors"></output>
 </div>
   <br>
   <div>
-    <app-form-buttons (send)="vm.send()" [send-disabled]="miForm.invalid" (cancel)="vm.cancel()"></app-form-buttons>
+    <app-form-buttons (send)="vm.send()" [send-disabled]="miForms.invalid" (cancel)="vm.cancel()"></app-form-buttons>
   </div>
 </form>

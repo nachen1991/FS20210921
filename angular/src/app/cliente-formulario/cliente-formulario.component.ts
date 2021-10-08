@@ -25,38 +25,19 @@ export class ClienteViewModel{
       correo: 'hola@quetal',
       direccion: '1',
       activo: true,
-      f_creacion: Date.toString(),
-      u_modificacion: Date.toString(),
+      f_creacion: '2021-10-22',
+      u_modificacion: (new Date('2021-10-22')).toString(),
       dni:'12345678Z'},
   ]
 
-
-  Elemento: Cliente = {customer_id: null,
-    store_id: this.Lista,
-    nombre: '',
-    apellidos: '',
-    correo: '',
-    direccion: '',
-    activo: true,
-    f_creacion: null,
-    u_modificacion: null,
-    dni:''};
+  Elemento: any =  {};
   IsAdd = true;
 
   constructor(private notify: NotificationService){
 
   }
   public add(){
-    this.Elemento = {customer_id: null,
-      store_id: this.Lista,
-      nombre: '',
-      apellidos: '',
-      correo: '',
-      direccion: '',
-      activo: true,
-      f_creacion: null,
-      u_modificacion: null,
-      dni:''};
+    this.Elemento = { };
     this.IsAdd = true;
   }
 

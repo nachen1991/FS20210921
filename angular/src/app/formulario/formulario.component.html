@@ -11,9 +11,10 @@
   <div>
     <label for="nombre">Nombre: </label>
     <input type="text" id ="nombre" name="nombre" [(ngModel)]="vm.Elemento.nombre" #nombre="ngModel" required minlength="2" maxlength="10">
-    <output class="error" [hidden]="!nombre.errors?.required">Es obligatorio.</output>
+    <!-- <output class="error" [hidden]="!nombre.errors?.required">Es obligatorio.</output>
     <output class="error" [hidden]="!nombre.errors?.minlength && !nombre.errors?.maxlength">
-      Debe tener entre 2 y 10 letras. </output>
+      Debe tener entre 2 y 10 letras. </output> -->
+      <output class="error" [showErrors]="nombre.errors"></output>
     {{nombre.errors | json}}
   </div>
   <div>

@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'errors-messages',
   templateUrl: './show-errors-messages.component.html',
   styleUrls: ['./show-errors-messages.component.scss']
 })
-export class ShowErrorsMessagesComponent implements OnInit {
+export class ShowErrorsMessagesComponent implements OnChanges {
   //  max = 'El máximo tiene que ser ';
   //  min = 'El minimo tiene que ser';
   //  maxlength = 'El maximo de caracteres es';
@@ -19,8 +19,15 @@ minlength='';
 max= 0;
 min=0;
 required = true;
+hidden = false;
 
   constructor() { }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!this.message) {
+      this.hidden = true;
+      return;
+    }
+  }
 
 lista_messages(){
   let m ='';
@@ -57,7 +64,6 @@ json() {
   return JSON.stringify(this.message);
 }
 
-  ngOnInit(): void {
-  }
+
 
 }
