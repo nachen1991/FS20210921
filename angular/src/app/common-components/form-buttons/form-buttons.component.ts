@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 
 
 @Component({
@@ -7,8 +7,9 @@ import { Component, OnInit, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./form-buttons.component.scss']
 })
 export class FormButtonsComponent implements OnInit {
-  @Output() send = new EventEmitter();
-  @Output() cancel = new EventEmitter();
+  @Input('send-disabled') sendDisabled: boolean | null = false;
+  @Output() send: EventEmitter<any> = new EventEmitter<any>();
+  @Output() cancel :EventEmitter<any>= new EventEmitter<any>();
 
   enviar() : void { this.send }
   volver() : void { this.cancel}

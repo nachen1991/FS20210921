@@ -8,7 +8,7 @@ import { FormButtonsComponent } from './form-buttons/form-buttons.component';
     ShowErrorsMessagesComponent, FormButtonsComponent,
   ],
   exports:[
-    FormButtonsComponent,
+    FormButtonsComponent, ShowErrorsMessagesComponent,
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
 <div>
-  <input type="button" value="enviar" (click)="enviar()"> |
-    <input type="button" value="volver" (click)="volver()" >
+  <input type="button" value="enviar" (click)="send.emit(null)" [disabled]="sendDisabled"> |
+    <input type="button" value="volver" (click)="cancel.emit(null)" >
 </div>

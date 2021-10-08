@@ -70,7 +70,17 @@ export class ClienteViewModel{
     this.IsAdd = false;
   }
   public delete(){
+    if(!window.confirm('¿Seguro?')){
+      return;
+    }
+    this.notify.add('Borrado');
+  }
+  public cancel(){
 
+  }
+
+  public send(){
+    this.notify.add((this.IsAdd ? 'Nuevos: ': 'Modificados: ') + JSON.stringify(this.Elemento));
   }
 
 
