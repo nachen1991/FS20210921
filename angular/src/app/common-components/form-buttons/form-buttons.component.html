@@ -1,4 +1,5 @@
-<div>
-  <input type="button" value="enviar" (click)="send.emit(null)" [disabled]="sendDisabled"> |
-    <input type="button" value="volver" (click)="cancel.emit(null)" >
+<div class="btn-group" role="group">
+  <button  *ngIf="hasSend" (click)="send.emit(null)" [disabled]="sendDisabled"> enviar</button>
+  <button  *ngIf="hasDelete" (click)="delete.emit(null)"> borrar</button>
+  <button  *ngIf="hasCancel" (click)="cancel.emit(null)"> volver</button>
 </div>

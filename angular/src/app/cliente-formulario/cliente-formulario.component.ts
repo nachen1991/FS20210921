@@ -1,5 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { NotificationService } from '../common-services';
+import { NotificationService, NotificationType } from '../common-services';
 
 export interface Cliente{
   customer_id:number | null;
@@ -70,9 +70,6 @@ export class ClienteViewModel{
     this.IsAdd = false;
   }
   public delete(){
-    if(!window.confirm('¿Seguro?')){
-      return;
-    }
     this.notify.add('Borrado');
   }
   public cancel(){
@@ -80,7 +77,7 @@ export class ClienteViewModel{
   }
 
   public send(){
-    this.notify.add((this.IsAdd ? 'Nuevos: ': 'Modificados: ') + JSON.stringify(this.Elemento));
+    this.notify.add((this.IsAdd ? 'Nuevos: ' : 'Modificados: ') + JSON.stringify(this.Elemento), NotificationType.info);
   }
 
 

@@ -10,11 +10,11 @@ export class FormButtonsComponent implements OnInit {
   @Input('send-disabled') sendDisabled: boolean | null = false;
   @Output() send: EventEmitter<any> = new EventEmitter<any>();
   @Output() cancel :EventEmitter<any>= new EventEmitter<any>();
+  @Output() delete: EventEmitter<any> = new EventEmitter<any>();
 
-  enviar() : void { this.send }
-  volver() : void { this.cancel}
-
-
+  get hasSend(): boolean { return this.send.observers.length > 0; }
+  get hasCancel(): boolean { return this.cancel.observers.length > 0; }
+  get hasDelete(): boolean { return this.delete.observers.length > 0; }
   ngOnInit(): void {
   }
 

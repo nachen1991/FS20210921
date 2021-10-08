@@ -1,8 +1,9 @@
 <div>
   <input type="button" value="add" (click)="vm.add()" >|
   <input type="button" value="edit" (click)="vm.edit()" >
+  <input type="button" value="delete" (myWinConfirm)="vm.delete()" myWinConfirmMessage="¿Seguro?">
 </div>
-<form #miForm="ngForm" class="form form--col4">
+<form #miForm="ngForm">
   <div>
   <label for="customer_id">Código Cliente</label><br>
   <input type="number" id="customer_id" name="customer_id"  [(ngModel)]="vm.Elemento.customer_id" #customer_id="ngModel" required min="0">
@@ -59,6 +60,6 @@
 </div>
   <br>
   <div>
- <app-form-buttons (enviar) = "vm.send()" (volver)="vm.cancel()" [send-disabled]="miForm.invalid"></app-form-buttons>
+    <app-form-buttons (send)="vm.send()" [send-disabled]="miForm.invalid" (cancel)="vm.cancel()"></app-form-buttons>
   </div>
 </form>
