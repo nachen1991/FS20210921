@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { NotificationService } from '../common-services';
@@ -20,7 +21,7 @@ export class PersonasViewModel{
   Elemento: Persona = {id: null, nombre: '', apellidos: '', correo: null, edad: null, dni: null};
   IsAdd = true;
 
-  constructor(private notify: NotificationService){
+  constructor(private notify: NotificationService,){
 
   }
 
@@ -33,6 +34,7 @@ export class PersonasViewModel{
   }
 
   public edit(){
+
     this.Elemento = this.Listado[0];
     this.IsAdd = false;
   }

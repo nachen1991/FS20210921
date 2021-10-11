@@ -20,6 +20,7 @@ max= 0;
 min=0;
 required = true;
 hidden = false;
+mensaje='';
 
   constructor() { }
   ngOnChanges(changes: SimpleChanges): void {
@@ -27,6 +28,7 @@ hidden = false;
       this.hidden = true;
       return;
     }
+    this.lista_messages;
   }
 
 lista_messages(){
@@ -56,7 +58,8 @@ lista_messages(){
           m = ''
       }
     }
-
+    this.mensaje=m.trim();
+    this.hidden = this.mensaje === '';
   }
   return m;
 }

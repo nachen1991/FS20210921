@@ -63,11 +63,9 @@ export class ShowErrorsDirective implements OnChanges{
             break;
         }
 
-      this.mensaje = m.trim();
-      this.hidden = this.mensaje ==='';
-
     }
-
+    this.mensaje = m.trim();
+    this.hidden = this.mensaje ==='';
   }
   json() {
     return JSON.stringify(this.message);

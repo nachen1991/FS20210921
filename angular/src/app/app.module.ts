@@ -15,8 +15,8 @@ import { environment } from 'src/environments/environment';
 import { FormularioComponent } from './formulario/formulario.component';
 import { ClienteFormularioComponent } from './cliente-formulario/cliente-formulario.component';
 import { CommonComponentsModule } from './common-components';
-
-@NgModule({
+import { HttpClientModule } from '@angular/common/http';
+ @NgModule({
   declarations: [
     AppComponent,
     DemosComponent,
@@ -28,7 +28,7 @@ import { CommonComponentsModule } from './common-components';
 
   ],
   imports: [
-    BrowserModule, FormsModule,
+    BrowserModule, FormsModule, HttpClientModule,
     AppRoutingModule, MyCoreModule, MainModule, CommonServicesModule, SecurityModule, CommonComponentsModule,
   ],
   providers: [
