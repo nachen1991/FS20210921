@@ -54,6 +54,9 @@ lista_messages(){
         case 'email':
           m += 'No es un correo valido';
           break;
+        case 'lowercase':
+          m += 'Tiene que estar en minúsculas';
+          break;
         default:
           m = ''
       }
