@@ -79,7 +79,8 @@
         id="telefono"
         [(ngModel)]="VM.Elemento.telefono"
         #telefono="ngModel"
-        maxlength="9"
+        minlength="9"
+        maxlength="11"
       />
       <output class="error" [showErrors]="telefono.errors"></output>
     </div>
