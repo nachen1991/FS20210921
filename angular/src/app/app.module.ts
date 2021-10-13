@@ -17,6 +17,7 @@ import { ClienteFormularioComponent } from './cliente-formulario/cliente-formula
 import { CommonComponentsModule } from './common-components';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactosModule } from './contactos';
+
  @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,6 @@ import { ContactosModule } from './contactos';
     CalculadoraComponent,
     FormularioComponent,
     ClienteFormularioComponent,
-
 
   ],
   imports: [

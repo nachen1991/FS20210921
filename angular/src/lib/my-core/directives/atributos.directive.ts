@@ -24,30 +24,30 @@ export class ShowDirective {
 @Directive({selector: '[showErrors]'})
 export class ShowErrorsDirective implements OnChanges{
 
-  @Input('showErrors') message: any = undefined;
-  @Input('textContext') mensaje: string='';
+  @Input('showErrors') errors: any = undefined;
+  @HostBinding('textContent') mensaje: string='';
   @HostBinding('hidden') hidden: boolean = false;
 
   ngOnChanges(changes:SimpleChanges):void{
-    if(!this.message){
+    if(!this.errors){
       this.hidden = true;
       return;
     }
     let m ='';
 
-     for(let msg of Object.keys(this.message)){
+     for(let msg of Object.keys(this.errors)){
         switch(msg){
           case 'max':
-            m += `El maximo es ${this.message[msg].max}`;
+            m += `El maximo es ${this.errors[msg].max}`;
             break;
           case 'min':
-            m+=  `El minimo es ${this.message[msg].min}`;
+            m+=  `El minimo es ${this.errors[msg].min}`;
             break;
           case 'maxlength':
-            m +=  `El maximo de caracteres es ${this.message[msg].requiredLength}`;
+            m +=  `El maximo de caracteres es ${this.errors[msg].requiredLength}`;
             break;
           case 'minlength':
-            m +=  `El minimo de caracteres es ${this.message[msg].requiredLength}`;
+            m +=  `El minimo de caracteres es ${this.errors[msg].requiredLength}`;
             break;
           case 'required':
             m += `Es obligatorio. `;
@@ -56,10 +56,10 @@ export class ShowErrorsDirective implements OnChanges{
             m += 'No es un correo valido';
             break;
           default:
-            if (typeof this.message[msg] === 'string')
-            m += `${this.message[msg]}. `;
-          else if (typeof this.message[msg]?.message === 'string')
-            m += `${this.message[msg].message}. `;
+            if (typeof this.errors[msg] === 'string')
+            m += `${this.errors[msg]}. `;
+          else if (typeof this.errors[msg]?.errors === 'string')
+            m += `${this.errors[msg].errors}. `;
             break;
         }
 
@@ -67,9 +67,7 @@ export class ShowErrorsDirective implements OnChanges{
     this.mensaje = m.trim();
     this.hidden = this.mensaje ==='';
   }
-  json() {
-    return JSON.stringify(this.message);
-  }
+
 
 }
 export const DIRECTIVAS_ATRIBUTO = [WindowConfirmDirective, ShowDirective, ShowErrorsDirective,]

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { NotificationService } from '../common-services';
 import { LoggerService } from 'src/lib/my-core';
+import { ModoCRUD } from '../base-code/tipos';
 
 export abstract class RESTDAOService<T, K> {
  protected baseUrl = environment.apiURL;
@@ -26,7 +27,7 @@ export abstract class RESTDAOService<T, K> {
  return this.http.delete<T>(this.baseUrl + '/' + id, this.option);
  }
 }
-export type ModoCRUD = 'list' | 'add' | 'edit' | 'view' | 'delete';
+
 
 @Injectable({
   providedIn: 'root'

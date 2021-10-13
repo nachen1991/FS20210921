@@ -18,6 +18,23 @@ export class UppercaseValidator implements Validator {
   }
 }
 
+export function LowercaseValidation(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+      if (!control.value) { return null; }
+      return control.value === control.value.toLowerCase() ? null : { lowercase: 'Tiene que estar en minusculas' }
+  };
+}
+
+@Directive({
+  selector: '[lowercase]',
+  providers: [{ provide: NG_VALIDATORS, useExisting: LowercaseValidator, multi: true }]
+})
+export class LowercaseValidator implements Validator {
+  validate(control: AbstractControl): ValidationErrors | null {
+    return LowercaseValidation()(control);
+  }
+}
+
 export function NIFValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
   if (!control.value) { return null; }
@@ -41,6 +58,78 @@ export function NIFValidator(): ValidatorFn {
   }
 
   @Directive({
+    selector: '[equalsTo][formControlName],[equalsTo][formControl],[equalsTo][ngModel]',
+    providers: [{ provide: NG_VALIDATORS, useExisting: EqualValidator, multi: true }]
+  })
+  export class EqualValidator implements Validator {
+    @Input('equalsTo') validateEqual: string | null | undefined;
+
+    validate(control: AbstractControl): ValidationErrors | null {
+      if (!control.value) return null;
+      if (!this.validateEqual)
+        throw new Error('Falta el control de referencia.');
+
+      let valor = control.value;
+      let cntrlBind = control.root.get(this.validateEqual);
+      if (!cntrlBind)
+        throw new Error('No encuentro el control de referencia.');
+
+      if (valor) {
+        return (valor !== cntrlBind.value) ? { 'equalsTo': `${valor} es distinto de ${cntrlBind?.value}` } : null;
+      }
+      return null;
+    }
+  }
+
+  @Directive({
+    selector: '[smallerorequalsThan][formControlName],[smallerorequalsThan][formControl],[smallerorequalsThan][ngModel]',
+    providers: [{ provide: NG_VALIDATORS, useExisting: SmallerOrEqualValidator, multi: true }]
+  })
+  export class SmallerOrEqualValidator implements Validator {
+    @Input('smallerorequalsThan') validateEqual: string | null | undefined;
+
+    validate(control: AbstractControl): ValidationErrors | null {
+      if (!control.value) return null;
+      if (!this.validateEqual)
+        throw new Error('Falta el control de referencia.');
+
+      let valor = control.value;
+      let cntrlBind = control.root.get(this.validateEqual);
+      if (!cntrlBind)
+        throw new Error('No encuentro el control de referencia.');
+
+      if (valor) {
+        return (valor <= cntrlBind.value) ? { 'equalsTo': `${valor} es menor o igual que ${cntrlBind?.value}` } : null;
+      }
+      return null;
+    }
+  }
+    @Directive({
+    selector: '[smallerThan][formControlName],[smallerThan][formControl],[smallerThan][ngModel]',
+    providers: [{ provide: NG_VALIDATORS, useExisting: SmallerThanValidator, multi: true }]
+  })
+  export class SmallerThanValidator implements Validator {
+    @Input('smallerThan') validateEqual: string | null | undefined;
+
+    validate(control: AbstractControl): ValidationErrors | null {
+      if (!control.value) return null;
+      if (!this.validateEqual)
+        throw new Error('Falta el control de referencia.');
+
+      let valor = control.value;
+      let cntrlBind = control.root.get(this.validateEqual);
+      if (!cntrlBind)
+        throw new Error('No encuentro el control de referencia.');
+
+      if (valor) {
+        return (valor < cntrlBind.value) ? { 'smallerThan': `${valor} es menor que ${cntrlBind?.value}` } : null;
+      }
+      return null;
+    }
+  }
+
+
+  @Directive({
     selector: '[greatherThan][formControlName],[greatherThan][formControl],[greatherThan][ngModel]',
     providers: [{ provide: NG_VALIDATORS, useExisting: GreatherThanValidator, multi: true }]
   })
@@ -58,7 +147,7 @@ export function NIFValidator(): ValidatorFn {
         throw new Error('No encuentro el control de referencia.');
 
       if (valor) {
-        return (valor >= cntrlBind.value) ? { 'greatherThan': `${valor} es mayor ${cntrlBind?.value}` } : null;
+        return (valor > cntrlBind.value) ? { 'greatherThan': `${valor} es mayor que ${cntrlBind?.value}` } : null;
       }
       return null;
     }
@@ -109,4 +198,4 @@ export function NIFValidator(): ValidatorFn {
       return AfterValidation(this.after)(control);
     }
   }
-export const MIS_VALIDADORES = [ UppercaseValidator, NIFValidatorDirective, GreatherThanValidator, BeforeValidator, AfterValidator ]
+export const MIS_VALIDADORES = [ UppercaseValidator,LowercaseValidator, NIFValidatorDirective,SmallerOrEqualValidator, SmallerThanValidator, GreatherThanValidator, BeforeValidator, AfterValidator ]

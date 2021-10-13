@@ -7,6 +7,7 @@ import { ContactosViewModelService } from './servicios.service';
   styleUrls: ['./componente.component.scss'],
 })
 export class ContactosComponent implements OnInit {
+
   constructor(protected vm: ContactosViewModelService) {}
   public get VM(): ContactosViewModelService {
     return this.vm;
@@ -22,6 +23,7 @@ export class ContactosComponent implements OnInit {
   styleUrls: ['./componente.component.scss'],
 })
 export class ContactosListComponent implements OnInit {
+  public page: number = 0;
   constructor(protected vm: ContactosViewModelService) {}
   public get VM(): ContactosViewModelService {
     return this.vm;
