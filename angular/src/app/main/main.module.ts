@@ -7,7 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { SecurityModule } from '../security';
 import { CommonServicesModule } from '../common-services';
 import { RouterModule } from '@angular/router';
-import { AjaxWaitComponent } from '.';
+import { AjaxWaitComponent } from './ajax-wait';
+
 
 
 
