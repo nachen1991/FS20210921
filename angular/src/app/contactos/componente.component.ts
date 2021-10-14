@@ -72,7 +72,7 @@ export class ContactosEditComponent implements OnInit, OnDestroy {
     });
   }
   ngOnDestroy(): void {
-    this.obs$.unsuscribe();
+    this.obs$.unsubscribe();
   }
 }
 @Component({

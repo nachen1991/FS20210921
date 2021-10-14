@@ -6,7 +6,7 @@ import { LibrosViewModelService } from './servicios.service';
 @Component({
   selector: 'app-libros',
   templateUrl: './tmpl-anfitrion.component.html',
-  //providers: [ LibrosViewModelService ],
+  providers: [ LibrosViewModelService ],
   styleUrls: ['./componente.component.scss']
 })
 export class LibrosComponent implements OnInit, OnDestroy {
@@ -62,7 +62,9 @@ export class BotonesComponent implements OnInit, OnDestroy {
 export class LibrosListComponent implements OnInit, OnDestroy {
   constructor(protected vm: LibrosViewModelService) { }
   public get VM(): LibrosViewModelService { return this.vm; }
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    //this.vm.list();
+   }
   ngOnDestroy(): void {  }
 }
 
@@ -74,7 +76,9 @@ export class LibrosListComponent implements OnInit, OnDestroy {
 export class LibrosAddComponent implements OnInit {
   constructor(protected vm: LibrosViewModelService) { }
   public get VM(): LibrosViewModelService { return this.vm; }
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.vm.add();
+   }
 }
 
 @Component({
@@ -83,10 +87,24 @@ export class LibrosAddComponent implements OnInit {
   styleUrls: ['./componente.component.scss']
 })
 export class LibrosEditComponent implements OnInit, OnDestroy {
-  constructor(protected vm: LibrosViewModelService) { }
+  private obs$: any;
+  constructor(protected vm: LibrosViewModelService,
+    protected route: ActivatedRoute,
+    protected router: Router) { }
   public get VM(): LibrosViewModelService { return this.vm; }
-  ngOnInit(): void { }
-  ngOnDestroy(): void { }
+  ngOnInit(): void {
+    this.obs$ = this.route.paramMap.subscribe((params: ParamMap) => {
+      const id = parseInt(params?.get('id') ?? '');
+      if (id) {
+        this.vm.edit(id);
+      } else {
+        this.router.navigate(['/404.html']);
+      }
+    });
+  }
+  ngOnDestroy(): void {
+    this.obs$.unsubscribe();
+   }
 }
 
 @Component({
@@ -95,10 +113,24 @@ export class LibrosEditComponent implements OnInit, OnDestroy {
   styleUrls: ['./componente.component.scss']
 })
 export class LibrosViewComponent implements OnInit, OnDestroy {
-  constructor(protected vm: LibrosViewModelService) { }
+  private obs$: any;
+  constructor(protected vm: LibrosViewModelService,
+    protected route: ActivatedRoute,
+    protected router: Router) { }
   public get VM(): LibrosViewModelService { return this.vm; }
-  ngOnInit(): void { }
-  ngOnDestroy(): void { }
+  ngOnInit(): void {
+    this.obs$ = this.route.paramMap.subscribe((params: ParamMap) => {
+      const id = parseInt(params?.get('id') ?? '');
+      if (id) {
+        this.vm.view(id);
+      } else {
+        this.router.navigate(['/404.html']);
+      }
+    });
+   }
+  ngOnDestroy(): void {
+    this.obs$.unsubscribe();
+  }
 }
 /*
 @Component({

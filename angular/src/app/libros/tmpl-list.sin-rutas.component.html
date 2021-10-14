@@ -11,15 +11,11 @@
       <td>
         <div class="container">
           <div class="row">
-            <div class="col-md-2">
-              <img class="rounded-circle float-left" src="{{item.avatar}}"
-                alt="Foto de {{item.nombre}} {{item.apellidos}}" width="75" height="75">
-            </div>
             <div class="col-md-10">
               <a type="button" class="btn btn-link btn-lg px-0" routerLink="{{item.idLibro}}/{{item.titulo}}">
                 {{item.titulo}} </a>
               <br>
-              <b>Tlfn.:</b> {{item.telefono}} <b>Correo:</b> {{item.email}}
+              <b>Autor:</b> {{item.autor}} <b>Año:</b> {{item.fecha}}
             </div>
           </div>
         </div>
@@ -27,8 +23,8 @@
       <td class="align-middle text-end">
         <!-- <app-botones (view)="VM.view(item.id)" (edit)="VM.edit(item.id)" (delete)="VM.delete(item.id)"></app-botones> -->
         <div class="btn-group" role="group">
-          <a class="btn btn-info" [routerLink]="[item.idlibro]"><i class="fas fa-eye"></i></a>
-          <a class="btn btn-success" [routerLink]="[item.idlibro, 'edit']"><i class="fas fa-pen"></i></a>
+          <a class="btn btn-info" [routerLink]="[item.idLibro]"><i class="fas fa-eye"></i></a>
+          <a class="btn btn-success" [routerLink]="[item.idLibro, 'edit']"><i class="fas fa-pen"></i></a>
           <a class="btn btn-danger" (click)="VM.delete(item.id)"><i class="far fa-trash-alt"></i></a>
         </div>
       </td>

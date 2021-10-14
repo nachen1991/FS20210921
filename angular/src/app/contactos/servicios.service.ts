@@ -6,6 +6,7 @@ import { NotificationService } from '../common-services';
 import { LoggerService } from 'src/lib/my-core';
 import { ModoCRUD } from '../base-code/tipos';
 import { Router } from '@angular/router';
+import { AUTH_REQUIRED } from '../security';
 
 export abstract class RESTDAOService<T, K> {
  protected baseUrl = environment.apiURL;
@@ -36,7 +37,7 @@ export abstract class RESTDAOService<T, K> {
  export class ContactosDAOService extends RESTDAOService<any, any> {
   constructor(http: HttpClient) {
   super(http, 'contactos', {
-  //context: new HttpContext().set(AUTH_REQUIRED, true)
+  context: new HttpContext().set(AUTH_REQUIRED, true)
   });
   }
  }

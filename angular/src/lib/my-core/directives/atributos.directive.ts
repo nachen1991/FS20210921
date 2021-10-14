@@ -38,22 +38,28 @@ export class ShowErrorsDirective implements OnChanges{
      for(let msg of Object.keys(this.errors)){
         switch(msg){
           case 'max':
-            m += `El maximo es ${this.errors[msg].max}`;
+            m += `No puede ser superior a ${this.errors[msg].max}`;
             break;
           case 'min':
-            m+=  `El minimo es ${this.errors[msg].min}`;
+            m+=  `No puede ser inferior a ${this.errors[msg].min}`;
             break;
           case 'maxlength':
-            m +=  `El maximo de caracteres es ${this.errors[msg].requiredLength}`;
+            m +=  `Debe tener menos de ${this.errors[msg].requiredLength} caracteres`;
             break;
           case 'minlength':
-            m +=  `El minimo de caracteres es ${this.errors[msg].requiredLength}`;
+            m +=  `Debe tener mas de ${this.errors[msg].requiredLength} caracteres`;
             break;
           case 'required':
             m += `Es obligatorio. `;
             break;
           case 'email':
             m += 'No es un correo valido';
+            break;
+          case 'lowercase':
+            m += 'Debe estar en minúsculas';
+            break;
+          case 'uppercase':
+            m+= 'Debe estar en mayúsculas';
             break;
           default:
             if (typeof this.errors[msg] === 'string')

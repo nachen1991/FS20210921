@@ -2,26 +2,29 @@
 <form #miForm="ngForm">
   <div class="form-row">
     <div class="form-group col-md-2">
-      <label class="form-label" for="id">Código:</label>
-      <input class="form-control" [class.is-invalid]="id.invalid && miForm.dirty" type="number" name="id" id="id"
-        [(ngModel)]="VM.Elemento.id" #id="ngModel" required min="0">
-      <div class="invalid-feedback" [hidden]="!id.hasError('required') || miForm.pristine">Es obligatorio</div>
+      <label class="form-label" for="idLibro">Código:</label>
+      <input class="form-control" [class.is-invalid]="id.invalid && miForm.dirty" type="number" name="idLibro" id="idLibro"
+        [(ngModel)]="VM.Elemento.idLibro" #id="ngModel" required min="0">
+      <!-- <div class="invalid-feedback" [hidden]="!id.hasError('required') || miForm.pristine">Es obligatorio</div> -->
+      <output class="error" [showErrors]="id.errors"></output>
     </div>
 
     <div class="form-group col-md-4">
       <label class="form-label" for="titulo">Titulo:</label>
       <input class="form-control" [class.is-invalid]="titulo.invalid" type="text" name="titulo" id="titulo"
         [(ngModel)]="VM.Elemento.titulo" #titulo="ngModel" required minlength="2" maxlength="50">
-      <div class="invalid-feedback" [hidden]="!titulo?.errors?.required">Es obligatorio</div>
+      <!-- <div class="invalid-feedback" [hidden]="!titulo?.errors?.required">Es obligatorio</div>
       <div class="invalid-feedback" [hidden]="!titulo?.errors?.minlength && !titulo?.errors?.maxlength">
-        Debe tener entre 2 y 10 letras</div>
+        Debe tener entre 2 y 10 letras</div> -->
+        <output class="error" [showErrors]="titulo.errors"></output>
     </div>
     <div class="form-group col-md-4">
       <label class="form-label" for="autor">Autor:</label>
       <input class="form-control" [class.is-invalid]="autor.invalid" type="text" name="autor" id="autor"
         [(ngModel)]="VM.Elemento.autor" #autor="ngModel" minlength="2" maxlength="50">
-      <div class="invalid-feedback" [hidden]="!autor?.errors?.minlength && !autor?.errors?.maxlength">
-        Debe tener entre 2 y 10 letras</div>
+      <!-- <div class="invalid-feedback" [hidden]="!autor?.errors?.minlength && !autor?.errors?.maxlength">
+        Debe tener entre 2 y 10 letras</div> -->
+      <output class="error" [showErrors]="autor.errors"></output>
     </div>
   </div>
   <div class="form-row">
@@ -29,38 +32,43 @@
       <label class="form-label" for="pais">Pais:</label>
       <input class="form-control" [class.is-invalid]="pais.invalid" type="text" name="pais" id="pais"
         [(ngModel)]="VM.Elemento.pais" #pais="ngModel" minlength="2" maxlength="20">
-      <div class="invalid-feedback" [hidden]="!pais?.errors?.maxlength">
-        No debe tener mas de 20 caracteres/div>
+      <!-- <div class="invalid-feedback" [hidden]="!pais?.errors?.maxlength">
+        No debe tener mas de 20 caracteres</div> -->
+      <output class="error" [showErrors]="pais.errors"></output>
     </div>
     <div class="form-group col-md-4">
       <label class="form-label" for="fecha">Fecha:</label>
       <input class="form-control" [class.is-invalid]="fecha.invalid" type="number" name="fecha" id="fecha"
-        [(ngModel)]="VM.Elemento.fecha" #fecha="ngModel" min="1900" max="2021">
-      <div class="invalid-feedback" [hidden]="fecha.valid">
+        [(ngModel)]="VM.Elemento.fecha" #fecha="ngModel" min="1600" max="2021">
+      <!-- <div class="invalid-feedback" [hidden]="fecha.valid">
         <span [hidden]="!fecha?.errors?.max">La fecha no puede ser superior a 2021 </span>
-        <span [hidden]="!fecha?.errors?.min">La fecha no puede ser inferior a 1900 </span>
-      </div>
+        <span [hidden]="!fecha?.errors?.min">La fecha no puede ser inferior a 1600 </span>
+      </div> -->
+      <output class="error" [showErrors]="fecha.errors"></output>
     </div>
     <div class="form-group col-md-4">
-      <label class="form-label" for="paginas">Páginas</label>
-      <input class="form-control" type="number" name="paginas" id="paginas" [(ngModel)]="VM.Elemento.paginas"
-        #paginas="ngModel" max ="999">
-        <div class="invalid-feedback" [hidden]="paginas.valid">
-        <span [hidden]="!paginas?.errors?.max">El máximo de paginas son 999 </span>
-      </div>
+      <label class="form-label" for="paginas">Paginas:</label>
+      <input class="form-control" [class.is-invalid]="paginas.invalid" type="number" name="paginas" id="paginas"
+        [(ngModel)]="VM.Elemento.paginas" #paginas="ngModel" min="0" max="999">
+      <!-- <div class="invalid-feedback" [hidden]="paginas.valid">
+        <span [hidden]="!paginas?.errors?.min">El número de páginas no pueden ser menor que 0 </span>
+        <span [hidden]="!paginas?.errors?.max">El número de páginas no pueden ser superior a 999 </span>
+      </div> -->
+      <output class="error" [showErrors]="paginas.errors"></output>
     </div>
   </div>
-  </div>
+
   <div class="form-group row">
     <div class="form-group col-md-12">
       <label class="form-label" for="wiki">Wiki:</label>
       <input class="form-control" [class.is-invalid]="wiki.invalid" type="url" name="wiki" id="wiki"
         [(ngModel)]="VM.Elemento.wiki" #wiki="ngModel" maxlength="500">
-      <div class="invalid-feedback" [hidden]="!wiki?.errors?.maxlength">
-        Debe tener menos 500 caracteres.</div>
+      <!-- <div class="invalid-feedback" [hidden]="!wiki?.errors?.maxlength">
+        Debe tener menos de 500 caracteres.</div>
       <div class="invalid-feedback" [hidden]="!wiki?.errors?.type">
-        {{wiki?.errors?.type}}</div>
+        {{wiki?.errors?.type}}</div>-->
     </div>
+    <output class="error" [showErrors]="wiki.errors"></output>
   </div>
   <app-form-buttons (send)="VM.send()" [send-disabled]="miForm.invalid" (cancel)="VM.cancel()"></app-form-buttons>
   <!-- <div class="form-group">

@@ -9,7 +9,7 @@ import { NavigationService, NotificationService } from '../common-services';
 import { AUTH_REQUIRED } from '../security';
 
 export class Libros {
-  id: number = 0;
+  idLibro: number = 0;
   tratamiento: string | null = null;
   nombre: string | null = null;
   apellidos: string | null = null;
@@ -110,9 +110,9 @@ export class LibrosViewModelService {
     this.elemento = {};
     this.idOriginal = null;
     // this.list();
-    this.router.navigateByUrl(this.listURL);
+    // this.router.navigateByUrl(this.listURL);
     //this.load(this.page)
-    // this.navigation.back()
+    this.navigation.back()
   }
 
   public send(): void {
