@@ -37,11 +37,7 @@ const routes: Routes = [
     ],
   },
   { path: 'antonie/hasted', redirectTo: '/contactos/27' },
-  {
-    path: 'config',
-    loadChildren: () =>
-      import('./config/config.module').then((mod) => mod.ConfigModule),
-  },
+  { path: 'config', loadChildren: () => import('./config/config.module').then(mod => mod.ConfigModule)},
   { path: '404.html', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
