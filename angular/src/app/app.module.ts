@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,14 +8,14 @@ import { FormsModule } from '@angular/forms';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { ERROR_LEVEL, LoggerService, MyCoreModule } from 'src/lib/my-core';
-import { MainModule } from './main';
+import { AjaxWaitInterceptor, MainModule } from './main';
 import { CommonServicesModule } from './common-services';
-import { SecurityModule } from './security';
+import { AuthInterceptor, SecurityModule } from './security';
 import { environment } from 'src/environments/environment';
 import { FormularioComponent } from './formulario/formulario.component';
 import { ClienteFormularioComponent } from './cliente-formulario/cliente-formulario.component';
 import { CommonComponentsModule } from './common-components';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ContactosModule } from './contactos';
 
  @NgModule({
@@ -36,6 +36,9 @@ import { ContactosModule } from './contactos';
     LoggerService,
     {provide: ERROR_LEVEL,useValue: environment.ERROR_LEVEL},
     //{provide: LoggerService, useClass: LoggerHTTPService},
+    { provide: LOCALE_ID, useValue: 'es-ES'},
+    { provide: HTTP_INTERCEPTORS, useClass: AjaxWaitInterceptor, multi: true, },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, },
   ],
   bootstrap: [AppComponent]
 })
