@@ -77,7 +77,7 @@ export class LibrosAddComponent implements OnInit {
   constructor(protected vm: LibrosViewModelService) { }
   public get VM(): LibrosViewModelService { return this.vm; }
   ngOnInit(): void {
-    this.vm.add();
+    // this.vm.add();
    }
 }
 
@@ -87,23 +87,23 @@ export class LibrosAddComponent implements OnInit {
   styleUrls: ['./componente.component.scss']
 })
 export class LibrosEditComponent implements OnInit, OnDestroy {
-  private obs$: any;
+  // private obs$: any;
   constructor(protected vm: LibrosViewModelService,
     protected route: ActivatedRoute,
     protected router: Router) { }
   public get VM(): LibrosViewModelService { return this.vm; }
   ngOnInit(): void {
-    this.obs$ = this.route.paramMap.subscribe((params: ParamMap) => {
-      const id = parseInt(params?.get('id') ?? '');
-      if (id) {
-        this.vm.edit(id);
-      } else {
-        this.router.navigate(['/404.html']);
-      }
-    });
+    // this.obs$ = this.route.paramMap.subscribe((params: ParamMap) => {
+    //   const id = parseInt(params?.get('id') ?? '');
+    //   if (id) {
+    //     this.vm.edit(id);
+    //   } else {
+    //     this.router.navigate(['/404.html']);
+    //   }
+    // });
   }
   ngOnDestroy(): void {
-    this.obs$.unsubscribe();
+    // this.obs$.unsubscribe();
    }
 }
 
@@ -113,23 +113,23 @@ export class LibrosEditComponent implements OnInit, OnDestroy {
   styleUrls: ['./componente.component.scss']
 })
 export class LibrosViewComponent implements OnInit, OnDestroy {
-  private obs$: any;
+  // private obs$: any;
   constructor(protected vm: LibrosViewModelService,
     protected route: ActivatedRoute,
     protected router: Router) { }
   public get VM(): LibrosViewModelService { return this.vm; }
   ngOnInit(): void {
-    this.obs$ = this.route.paramMap.subscribe((params: ParamMap) => {
-      const id = parseInt(params?.get('id') ?? '');
-      if (id) {
-        this.vm.view(id);
-      } else {
-        this.router.navigate(['/404.html']);
-      }
-    });
+    // this.obs$ = this.route.paramMap.subscribe((params: ParamMap) => {
+    //   const id = parseInt(params?.get('id') ?? '');
+    //   if (id) {
+    //     this.vm.view(id);
+    //   } else {
+    //     this.router.navigate(['/404.html']);
+    //   }
+    // });
    }
   ngOnDestroy(): void {
-    this.obs$.unsubscribe();
+    // this.obs$.unsubscribe();
   }
 }
 /*

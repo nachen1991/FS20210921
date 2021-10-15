@@ -1,4 +1,8 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { LoggerService } from 'src/lib/my-core';
+import { NotificationService } from '../common-services';
 
 import { CalculadoraComponent } from './calculadora.component';
 
@@ -8,7 +12,9 @@ describe('CalculadoraComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalculadoraComponent ]
+      declarations: [ CalculadoraComponent ],
+      providers: [NotificationService, LoggerService],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });
@@ -16,10 +22,14 @@ describe('CalculadoraComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CalculadoraComponent);
     component = fixture.componentInstance;
+    // notify = TestBed.inject(NotificationService)
+    // spyOn(notify, 'add')
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });
