@@ -2,15 +2,29 @@
   <thead>
     <tr class="table-info">
       <th class="display-4">Lista de contactos</th>
-      <th class="text-end">
+      <!-- <th class="text-end">
         <button class="btn btn-success" routerLink="add">
+          <i class="fas fa-plus"></i> Añadir
+        </button>
+      </th> -->
+      <th class="text-end">
+        <button
+          *ngIf="VM.auth.isAutenticated"
+          class="btn btn-success"
+          routerLink="add"
+        >
           <i class="fas fa-plus"></i> Añadir
         </button>
       </th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of VM.Listado | paginate: { itemsPerPage: 10, currentPage: page }">
+    <tr
+      *ngFor="
+        let item of VM.Listado
+          | paginate: { itemsPerPage: 10, currentPage: page }
+      "
+    >
       <td>
         <div class="container">
           <div class="row">
@@ -27,10 +41,12 @@
               <a
                 type="button"
                 class="btn btn-link btn-lg px-0"
-                routerLink="{{item.id}}/{{item.nombre}}-{{item.apellidos}}"
+                routerLink="{{ item.id }}/{{ item.nombre }}-{{
+                  item.apellidos
+                }}"
               >
                 {{ item.tratamiento }} {{ item.nombre }} {{ item.apellidos }}
-            </a>
+              </a>
               <br />
               <b>Tlfn.:</b> {{ item.telefono }} <b>Correo:</b> {{ item.email }}
             </div>
@@ -39,7 +55,10 @@
       </td>
       <td class="align-middle text-end">
         <div class="btn-group" role="group">
-          <button class="btn btn-info" routerLink="{{item.id}}/{{item.nombre}}-{{item.apellidos}}">
+          <button
+            class="btn btn-info"
+            routerLink="{{ item.id }}/{{ item.nombre }}-{{ item.apellidos }}"
+          >
             <i class="fas fa-eye"></i>
           </button>
           <button class="btn btn-success" [routerLink]="[item.id, 'edit']">
@@ -51,9 +70,10 @@
         </div>
       </td>
     </tr>
-
   </tbody>
 </table>
-<pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
-
-
+<pagination-controls
+  (pageChange)="page = $event"
+  previousLabel="Anterior"
+  nextLabel="Siguiente"
+></pagination-controls>

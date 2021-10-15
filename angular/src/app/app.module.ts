@@ -1,6 +1,9 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import localeEsExtra from '@angular/common/locales/extra/es';
+registerLocaleData(localeEs, 'es', localeEsExtra);
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DemosComponent } from './demos/demos.component';
@@ -17,6 +20,8 @@ import { ClienteFormularioComponent } from './cliente-formulario/cliente-formula
 import { CommonComponentsModule } from './common-components';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ContactosModule } from './contactos';
+import { BlogModule } from './blog';
+import { LibrosModule } from './libros';
 
  @NgModule({
   declarations: [
@@ -29,7 +34,7 @@ import { ContactosModule } from './contactos';
 
   ],
   imports: [
-    BrowserModule, FormsModule, HttpClientModule, ContactosModule,
+    BrowserModule, FormsModule, HttpClientModule, ContactosModule, LibrosModule, BlogModule,
     AppRoutingModule, MyCoreModule, MainModule, CommonServicesModule, SecurityModule, CommonComponentsModule,
   ],
   providers: [

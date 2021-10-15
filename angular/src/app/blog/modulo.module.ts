@@ -13,7 +13,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
   declarations: [
     BLOG_COMPONENTES,
   ],
-  exports: [BLOG_COMPONENTES,
+  exports: [
+    BLOG_COMPONENTES,
   ],
   imports: [
     CommonModule, FormsModule, RouterModule.forChild([]),NgxPaginationModule,
@@ -21,4 +22,4 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ],
 
 })
-export class BLOGModule { }
+export class BlogModule { }

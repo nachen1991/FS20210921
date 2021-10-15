@@ -20,7 +20,7 @@ export class NotificationService {
 
   constructor(private out: LoggerService) { }
 
-  public get Listado(){
+  public get Listado():Array<Notification>{
     return Object.assign([], this.listado);
   }
   public get HayNotificaciones(){

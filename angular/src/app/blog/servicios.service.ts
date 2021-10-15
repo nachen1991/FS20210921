@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { NotificationService } from '../common-services';
+import { NavigationService, NotificationService } from '../common-services';
 import { LoggerService } from 'src/lib/my-core';
 import { ModoCRUD } from '../base-code/tipos';
 import { Router } from '@angular/router';
@@ -15,6 +15,7 @@ export class Blog {
   titulo: string | null = null;
   autor: string | null = null;
   fecha: string | null = null;
+  megusta: number | null = null;
   fotourl: string | null = null;
 
 }
@@ -46,7 +47,7 @@ export abstract class RESTDAOService<T, K> {
  })
  export class BlogDAOService extends RESTDAOService<any, any> {
   constructor(http: HttpClient) {
-  super(http, 'Blog', {
+  super(http, 'blog', {
   context: new HttpContext().set(AUTH_REQUIRED, true)
   });
   }
@@ -55,13 +56,13 @@ export abstract class RESTDAOService<T, K> {
   providedIn: 'root'
 })
 export class BlogViewModelService{
-  protected listURL = '/Blog';
+  protected listURL = '/blog';
   protected modo: ModoCRUD = 'list';
   protected listado: Array<any> = [];
   protected elemento: any = {};
   protected idOriginal: any = null;
-  constructor(protected notify: NotificationService, protected out: LoggerService, protected dao: BlogDAOService,
-    protected router: Router) { }
+  constructor(protected notify: NotificationService, protected out: LoggerService,private navigation: NavigationService,
+     protected dao: BlogDAOService,protected router: Router) { }
 
   public get Modo(): ModoCRUD { return this.modo; }
   public get Listado(): Array<any> { return this.listado; }
@@ -116,8 +117,8 @@ export class BlogViewModelService{
   public cancel(): void {
     this.elemento = {};
     this.idOriginal = null;
-    //this.list();
-    this.router.navigateByUrl(this.listURL);
+    // this.router.navigateByUrl(this.listURL);
+    this.navigation.back()
   }
 
   public send(): void {

@@ -5,60 +5,37 @@
       <div class="row">
         <div class="col-sm-6 col-md-4">
           <img
-            src="{{ VM.Elemento.avatar }}"
-            alt="Foto de {{ VM.Elemento.nombre }} {{ VM.Elemento.apellidos }}"
+            src="{{ VM.Elemento.fotourl }}"
+            alt="Foto de {{ VM.Elemento.titulo }}"
             class="rounded"
           />
         </div>
         <div class="col-sm-6 col-md-8">
           <h4>
-            {{ VM.Elemento.tratamiento }} {{ VM.Elemento.nombre }}
-            {{ VM.Elemento.apellidos }}
+            {{ VM.Elemento.titulo }}
           </h4>
-          <p [hidden]="!VM.Elemento.conflictivo">
-            <small class="text-danger">
-              <i class="fas fa-skull-crossbones mr-2"></i>Persona
-              conflictiva</small
-            >
-          </p>
+          <p><i class="fas fa-user mr-2"></i> Autor: {{ VM.Elemento.autor }}</p>
           <p>
-            <i class="fas fa-phone-alt mr-2"></i>{{ VM.Elemento.telefono }}
+            <i class="fas fa-calendar mr-2"></i
+            >{{ VM.Elemento.fecha | date: "dd/MM/yyyy" }}
             <br />
-            <i class="fas fa-envelope mr-2"></i>
-            <a href="mailto:{{ VM.Elemento.email }}">{{ VM.Elemento.email }}</a>
-            <br />
-            <i class="fas fa-gifts mr-2"></i
-            >{{ VM.Elemento.nacimiento | date: "dd/MM/yyyy" }}
+            {{ VM.Elemento.texto }}
           </p>
-          <div class="btn-group">
-            <button type="button" class="btn btn-primary">Social</button>
-            <button
-              type="button"
-              class="btn btn-primary dropdown-toggle"
-              data-toggle="dropdown"
-            >
-              <span class="caret"></span><span class="sr-only">Social</span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Twitter</a></li>
-              <li>
-                <a href="https://plus.google.com/+Jquery2dotnet/posts"
-                  >Google +</a
-                >
-              </li>
-              <li>
-                <a href="https://www.facebook.com/jquery2dotnet">Facebook</a>
-              </li>
-              <li class="divider"></li>
-              <li><a href="#">Github</a></li>
-            </ul>
+
+          <button
+            type="button"
+            [hidden]="!VM.Elemento.megusta"
+            class="btn btn-info"
+          >
+            <i class="fas fa-smile-o mr-2"></i>Me gusta
+          </button>
             <input
               class="btn btn-secondary"
               type="button"
               value="Volver"
               (click)="VM.cancel()"
             />
-          </div>
+
         </div>
       </div>
     </div>

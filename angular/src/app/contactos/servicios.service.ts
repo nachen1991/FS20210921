@@ -6,7 +6,7 @@ import { NotificationService } from '../common-services';
 import { LoggerService } from 'src/lib/my-core';
 import { ModoCRUD } from '../base-code/tipos';
 import { Router } from '@angular/router';
-import { AUTH_REQUIRED } from '../security';
+import { AuthService, AUTH_REQUIRED } from '../security';
 
 
 export class Contactos {
@@ -64,7 +64,7 @@ export class ContactosViewModelService{
   protected elemento: any = {};
   protected idOriginal: any = null;
   constructor(protected notify: NotificationService, protected out: LoggerService, protected dao: ContactosDAOService,
-    protected router: Router) { }
+    protected router: Router, public auth:AuthService,) { }
 
   public get Modo(): ModoCRUD { return this.modo; }
   public get Listado(): Array<any> { return this.listado; }
@@ -119,7 +119,6 @@ export class ContactosViewModelService{
   public cancel(): void {
     this.elemento = {};
     this.idOriginal = null;
-    //this.list();
     this.router.navigateByUrl(this.listURL);
   }
 
