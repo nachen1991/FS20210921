@@ -11,7 +11,7 @@ import {
 import { DemosComponent } from './demos/demos.component';
 import { LibrosComponent } from './libros';
 import { HomeComponent, PageNotFoundComponent } from './main';
-import { AuthGuard } from './security';
+import { AuthGuard, RegisterUserComponent } from './security';
 
 //http://localhost:4200/contactos/add
 
@@ -51,6 +51,7 @@ const routes: Routes = [
   },
   { path: 'antonie/hasted', redirectTo: '/contactos/27', data: { pageTitle: 'Contacto' } },
   { path: 'config', loadChildren: () => import('./config/config.module').then(mod => mod.ConfigModule), data: { pageTitle: 'Configuración' }},
+  { path: 'registro', component: RegisterUserComponent },
   { path: '404.html', component: PageNotFoundComponent, data: { pageTitle: 'Página no encontrada' } },
   { path: '**', component: PageNotFoundComponent, data: { pageTitle: 'Página no encontrada' } },
 ];
