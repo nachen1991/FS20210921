@@ -41,7 +41,6 @@ export abstract class RESTDAOService<T, K> {
  }
 }
 
-
 @Injectable({
   providedIn: 'root'
  })

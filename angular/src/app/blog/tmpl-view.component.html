@@ -15,14 +15,16 @@
 
   <p>{{ VM.Elemento.texto }}</p>
 
- <i class="fas fa-smile-o mr-2"></i>
+ 
  <button type="button" *ngIf="VM.auth.isAutenticated" class="btn btn-info" (click)="VM.megusta(VM.Elemento.megusta)">
-   Me gusta {{VM.Elemento.megusta}}
- </button>
-  <input
+  <i class="fas fa-smile-o mr-2"></i>Me gusta {{VM.Elemento.megusta}}
+  </button>
+  <br/>
+  <button class="btn btn-success" routerLink="../edit">
+    <i class="fas fa-pen">Editar</i>
+  </button>
+  <button
     class="btn btn-secondary"
-    type="button"
-    value="Volver"
     (click)="VM.cancel()"
-  />
+  >Volver</button>
 </article>
