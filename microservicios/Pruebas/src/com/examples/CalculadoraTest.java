@@ -3,6 +3,7 @@ package com.examples;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.invoke.VarHandle;
+import java.util.DoubleSummaryStatistics;
 
 import javax.sql.rowset.CachedRowSet;
 
@@ -38,7 +39,7 @@ class CalculadoraTest {
 		
 		assertEquals(4,calc.suma(2, 2));
 	}
-
+	public class Divisiones{
 	@Test
 	void test_Divide_Double_Double() {
 		assertEquals(0.5,calc.divide(1.0,2));
@@ -56,6 +57,6 @@ class CalculadoraTest {
 	}
 	
 	
-	
+	}
 
 }
