@@ -83,7 +83,7 @@ class ContactosDAOService extends DAOServiceMock<Contactos, number> {
     ])
   }
 }
-fdescribe('ContactosViewModelService', () => {
+describe('ContactosViewModelService', () => {
   let service: ContactosViewModelService;
   let dao: ContactosDAOService;
 

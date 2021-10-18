@@ -1,43 +1,28 @@
-<h1>Contacto</h1>
-<div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-6">
-    <div class="well well-sm">
-      <div class="row">
-        <div class="col-sm-6 col-md-4">
-          <img
-            src="{{ VM.Elemento.fotourl }}"
-            alt="Foto de {{ VM.Elemento.titulo }}"
-            class="rounded"
-          />
-        </div>
-        <div class="col-sm-6 col-md-8">
-          <h4>
-            {{ VM.Elemento.titulo }}
-          </h4>
-          <p><i class="fas fa-user mr-2"></i> Autor: {{ VM.Elemento.autor }}</p>
-          <p>
-            <i class="fas fa-calendar mr-2"></i
-            >{{ VM.Elemento.fecha | date: "dd/MM/yyyy" }}
-            <br />
-            {{ VM.Elemento.texto }}
-          </p>
+<article class="blog-post">
+  <h2 class="blog-post-title">{{ VM.Elemento.titulo }}</h2>
+  <p class="blog-post-meta">
+    {{ VM.Elemento.fecha
+    }} by
+    <i class="fas fa-user mr-2">{{ VM.Elemento.autor }} </i>
+  </p>
+  <img
+    src="{{ VM.Elemento.fotourl }}"
+    alt="Foto de {{ VM.Elemento.titulo }}"
+    class="rounded"
+    width="175"
+    height="175"
+  />
 
-          <button
-            type="button"
-            [hidden]="!VM.Elemento.megusta"
-            class="btn btn-info"
-          >
-            <i class="fas fa-smile-o mr-2"></i>Me gusta
-          </button>
-            <input
-              class="btn btn-secondary"
-              type="button"
-              value="Volver"
-              (click)="VM.cancel()"
-            />
+  <p>{{ VM.Elemento.texto }}</p>
 
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+ <i class="fas fa-smile-o mr-2"></i>
+ <button type="button" *ngIf="VM.auth.isAutenticated" class="btn btn-info" (click)="VM.megusta(VM.Elemento.megusta)">
+   Me gusta {{VM.Elemento.megusta}}
+ </button>
+  <input
+    class="btn btn-secondary"
+    type="button"
+    value="Volver"
+    (click)="VM.cancel()"
+  />
+</article>

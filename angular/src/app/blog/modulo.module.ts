@@ -9,6 +9,7 @@ import { CommonComponentsModule } from '../common-components';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 
+
 @NgModule({
   declarations: [
     BLOG_COMPONENTES,

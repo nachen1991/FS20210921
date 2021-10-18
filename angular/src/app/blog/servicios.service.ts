@@ -6,7 +6,7 @@ import { NavigationService, NotificationService } from '../common-services';
 import { LoggerService } from 'src/lib/my-core';
 import { ModoCRUD } from '../base-code/tipos';
 import { Router } from '@angular/router';
-import { AUTH_REQUIRED } from '../security';
+import { AuthService, AUTH_REQUIRED } from '../security';
 
 
 export class Blog {
@@ -62,7 +62,7 @@ export class BlogViewModelService{
   protected elemento: any = {};
   protected idOriginal: any = null;
   constructor(protected notify: NotificationService, protected out: LoggerService,private navigation: NavigationService,
-     protected dao: BlogDAOService,protected router: Router) { }
+     protected dao: BlogDAOService,protected router: Router, public auth:AuthService,) { }
 
   public get Modo(): ModoCRUD { return this.modo; }
   public get Listado(): Array<any> { return this.listado; }
@@ -107,6 +107,27 @@ export class BlogViewModelService{
     err => this.notify.add(err.message)
     );
   }
+
+
+  // public megusta(key: any): void {
+  //   this.dao.get(key).subscribe(
+  //   data => {
+  //   this.elemento = data;
+  //   this.idOriginal += key;
+  //   this.modo = 'edit';
+  //   },
+  //   err => this.notify.add(err.message)
+  //   );
+  // }
+  megusta(item: any) {
+    if (item == undefined){
+           item = 0;
+    } else if(item.canti != undefined){
+           item.canti++;
+    }
+ }
+
+
 
   clear() {
     this.elemento = {};

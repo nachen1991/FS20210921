@@ -32,9 +32,10 @@ import { LibrosModule } from './libros';
     FormularioComponent,
     ClienteFormularioComponent,
 
+
   ],
   imports: [
-    BrowserModule, FormsModule, HttpClientModule, ContactosModule, LibrosModule, BlogModule,
+    BrowserModule, FormsModule, HttpClientModule, ContactosModule, LibrosModule,
     AppRoutingModule, MyCoreModule, MainModule, CommonServicesModule, SecurityModule, CommonComponentsModule,
   ],
   providers: [

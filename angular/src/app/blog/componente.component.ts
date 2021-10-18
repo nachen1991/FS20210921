@@ -23,6 +23,8 @@ export class BlogComponent implements OnInit {
   styleUrls: ['./componente.component.scss'],
 })
 export class BlogListComponent implements OnInit {
+  searchText='';
+
   public page: number = 0;
   constructor(protected vm: BlogViewModelService) {}
   public get VM(): BlogViewModelService {
@@ -30,6 +32,7 @@ export class BlogListComponent implements OnInit {
   }
   ngOnInit(): void {
     this.vm.list();
+
   }
 }
 @Component({
