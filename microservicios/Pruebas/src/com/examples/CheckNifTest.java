@@ -45,10 +45,8 @@ class CheckNifTest {
 	void testCheckNif2(String dni) {
 		String dni2 = null;
 		assertAll("Pruebas 2", 
-				() -> assertFalse(cNif.checkNif(dni)),
-				() -> assertThrows(Exception.class,() -> cNif.checkNif(dni2)),
-				() -> assertEquals(false, cNif.checkNif(dni))
-				
+				() -> assertFalse(cNif.checkNif(dni), "Fail pattern"),
+				() -> assertThrows(Exception.class,() -> cNif.checkNif(dni2), "Is null")
 			);
 		
 	}
