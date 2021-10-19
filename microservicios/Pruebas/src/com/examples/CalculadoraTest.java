@@ -46,6 +46,7 @@ class CalculadoraTest {
 	@Test
 	@Tag("smoke")
 	void testHumo() {	
+		
 		assertEquals(3, calc.suma(1, 2));
 	}
 
