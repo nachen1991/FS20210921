@@ -2,6 +2,8 @@ package com.examples;
 
 import static org.junit.Assume.assumeTrue;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -11,12 +13,16 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Tag;
 
+//@ExtendWith(MockitoExtension.class)
 class CalculadoraTest {
 	Calculadora calc;
 
@@ -81,4 +87,24 @@ class CalculadoraTest {
 
 	}
 
+	
+//	@Nested
+//	@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+//	public class Mockeado{
+//		@Mock
+//		Calculadora calculadora;
+//		
+//		@Test
+//		void suma_mock() {
+//			when(calculadora.suma(2, 2)).thenReturn(2.0);
+//			
+//			assertEquals(calculadora.suma(2, 2), 2);
+//			
+//		}
+//		
+//	
+//		
+//	}
+
 }
+

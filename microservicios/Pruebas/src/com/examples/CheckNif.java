@@ -8,7 +8,7 @@ public class CheckNif {
 
 	public boolean checkNif(String nif) {
 		boolean result = false;
-		Pattern patronPattern = Pattern.compile("[0-9]{7,8}[A-Z a-z]");
+		Pattern patronPattern = Pattern.compile("[0-9]{1,8}[A-Z a-z]");
 		if(patronPattern.matcher(nif).matches()) {
 			String letterValue = nif.substring(nif.length() - 1);
 			String numberValue = nif.substring(0, nif.length() -1);

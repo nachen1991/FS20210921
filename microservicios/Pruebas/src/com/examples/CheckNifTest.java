@@ -11,6 +11,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullSource;
 
 class CheckNifTest {
 	CheckNif cNif;
@@ -33,18 +35,20 @@ class CheckNifTest {
 	}
 
 	@ParameterizedTest
-	@DisplayName("Prueba 1")
-	@CsvSource({"70548641M", "82228644X", "12345678Z"})
-	void testCheckNif1(String dni) {
+	@DisplayName("Prueba True")
+	//@NullSource
+	@CsvSource({"70548641M", "1234S", "12345678Z"})
+	void testCheckNifTrue(String dni) {
 		assertTrue(cNif.checkNif(dni));
 		
 	}
 	@ParameterizedTest
-	@DisplayName("Prueba 2")
-	@CsvSource({"12345678P", "''", "12345a"})
-	void testCheckNif2(String dni) {
+	@DisplayName("Prueba False")
+	@EmptySource
+	@CsvSource({"12345678P", "''", "12345a", "1a34567z"})
+	void testCheckNifFalse(String dni) {
 		String dni2 = null;
-		assertAll("Pruebas 2", 
+		assertAll("Pruebas", 
 				() -> assertFalse(cNif.checkNif(dni), "Fail pattern"),
 				() -> assertThrows(Exception.class,() -> cNif.checkNif(dni2), "Is null")
 			);
