@@ -17,6 +17,7 @@ public interface ActorRepository extends JpaRepository<Actor, Integer> {
 	List<Actor> findByLastUpdateGreaterThan(LocalDate fecha);
 	
 //	List<ActorDTO> findByActorIdNotNull();
+//	List<ActorShort> findByActorIdNotNull();
 	<T> List<T> findByActorIdNotNull(Class<T> type);
 	
 	@Query("FROM Actor a WHERE a.lastUpdate > ?1 ")

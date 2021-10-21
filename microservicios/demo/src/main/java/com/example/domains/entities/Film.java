@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -62,7 +63,7 @@ public class Film implements Serializable {
 
 	//bi-directional many-to-one association to FilmCategory
 	@OneToMany(mappedBy="film")
-	private List<FilmCategory> filmCategories;
+	private List<FilmCategory> filmCategories = new ArrayList<FilmCategory>();;
 
 	//bi-directional many-to-one association to Inventory
 	@OneToMany(mappedBy="film")
@@ -76,6 +77,14 @@ public class Film implements Serializable {
 	public Film(int filmId) {
 		super();
 		this.filmId = filmId;
+	}
+
+
+
+	public Film(int filmId, String title) {
+		super();
+		this.filmId = filmId;
+		this.title = title;
 	}
 
 
