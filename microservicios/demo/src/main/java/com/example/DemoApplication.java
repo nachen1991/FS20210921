@@ -19,6 +19,8 @@ import com.example.domains.entities.Category;
 import com.example.domains.entities.Film;
 import com.example.domains.entities.dtos.ActorDTO;
 import com.example.domains.entities.dtos.ActorShort;
+import com.example.domains.entities.dtos.CategoryDTO;
+import com.example.domains.entities.dtos.CategoryShort;
 import com.example.domains.services.ActorServiceImpl;
 import com.example.infrastructure.repositories.ActorRepository;
 import com.example.infrastructure.repositories.CategoryRepository;
@@ -112,6 +114,9 @@ public class DemoApplication implements CommandLineRunner {
 //		dao2.findAll().forEach(System.out::println);
 		
 //		srv2.getAll().forEach(System.out::println);
+		
+		dao2.findByCategoryIdNotNull(CategoryShort.class).forEach(item -> System.out.println(item.getNombre()));
+		dao2.findByCategoryIdNotNull(CategoryDTO.class).forEach(item -> System.out.println(item));
 	}
 
 }
