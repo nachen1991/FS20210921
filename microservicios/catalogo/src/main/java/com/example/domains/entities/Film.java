@@ -71,7 +71,6 @@ public class Film extends EntityBase<Film> implements Serializable {
 	public Film() {
 	}
 
-	
 
 	public Film(int filmId) {
 		super();

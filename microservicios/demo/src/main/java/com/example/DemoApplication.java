@@ -115,8 +115,8 @@ public class DemoApplication implements CommandLineRunner {
 		
 //		srv2.getAll().forEach(System.out::println);
 		
-		dao2.findByCategoryIdNotNull(CategoryShort.class).forEach(item -> System.out.println(item.getNombre()));
-		dao2.findByCategoryIdNotNull(CategoryDTO.class).forEach(item -> System.out.println(item));
+//		dao2.findByCategoryIdNotNull(CategoryShort.class).forEach(item -> System.out.println(item.getNombre()));
+//		dao2.findByCategoryIdNotNull(CategoryDTO.class).forEach(item -> System.out.println(item));
 	}
 
 }
