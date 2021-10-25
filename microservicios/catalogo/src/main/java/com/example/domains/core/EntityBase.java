@@ -1,6 +1,7 @@
 package com.example.domains.core;
 
-import java.beans.Transient;
+import org.springframework.data.annotation.Transient;
+
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -23,7 +24,7 @@ public abstract class EntityBase<E> {
 	
 	@JsonIgnore
 	@Transient
-	public String getErroString() {
+	public String getErrorsString() {
 		Set<ConstraintViolation<E>> lst = getErrors();
 		if(lst.isEmpty()) return "";
 		StringBuilder sb = new StringBuilder("ERRORES:");

@@ -89,6 +89,15 @@ public class Film implements Serializable {
 
 
 
+	public Film(int filmId, String title, Language language) {
+		super();
+		this.filmId = filmId;
+		this.title = title;
+		this.language = language;
+	}
+
+
+
 	public int getFilmId() {
 		return this.filmId;
 	}

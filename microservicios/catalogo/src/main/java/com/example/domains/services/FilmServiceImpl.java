@@ -8,65 +8,72 @@ import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import com.example.domains.contracts.services.ActorService;
+import com.example.domains.contracts.services.FilmService;
 import com.example.domains.entities.Actor;
+import com.example.domains.entities.Category;
+import com.example.domains.entities.Film;
+import com.example.domains.entities.Language;
+import com.example.domains.entities.dtos.ActorDTO;
+import com.example.domains.entities.dtos.ActorShort;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
-import com.example.infrastructure.repositories.ActorRepository;
+import com.example.infrastructure.repositories.FilmRepository;
 
 
 @Service
-public class ActorServiceImpl implements ActorService {
+public class FilmServiceImpl implements FilmService {
 	@Autowired
-	private ActorRepository dao;
+	private FilmRepository dao;
 
 	@Override
-	public List<Actor> getAll() {
+	public List<Film> getAll() {
 
 		return dao.findAll();
 	}
 
 	@Override
-	public Iterable<Actor> getAll(Sort sort) {
+	public Iterable<Film> getAll(Sort sort) {
 		return dao.findAll(sort);
 	}
 
 	@Override
-	public Page<Actor> getAll(Pageable pageable) {
+	public Page<Film> getAll(Pageable pageable) {
 		return dao.findAll(pageable);
 	}
 
 	@Override
 	public <T> List<T> getByProjection(Class<T> type) {
-		return dao.findByActorIdIsNotNull(type);
+		return dao.findByFilmIdIsNotNull(type);
 	}
 
 	@Override
 	public <T> Iterable<T> getByProjection(Sort sort, Class<T> type) {
-		return dao.findByActorIdIsNotNull(sort, type);
+		return dao.findByFilmIdIsNotNull(sort, type);
 	}
 
 	@Override
 	public <T> Page<T> getByProjection(Pageable pageable, Class<T> type) {
-		return dao.findByActorIdIsNotNull(pageable, type);
+		return dao.findByFilmIdIsNotNull(pageable, type);
 	}
 
 	@Override
-	public Optional<Actor> getOne(Integer id) {
+	public Optional<Film> getOne(Integer id) {
 
 		return dao.findById(id);
 	}
+	
+	
 
 	@Override
-	public Actor add(Actor item) throws DuplicateKeyException, InvalidDataException {
+	public Film add(Film item) throws DuplicateKeyException, InvalidDataException {
 		if (item == null) {
 			throw new InvalidDataException("Faltan los datos");
 		}
 		if (item.isInvalid()) {
 			throw new InvalidDataException(item.getErrorsString());
 		}
-		if (getOne(item.getActorId()).isPresent()) {
+		if (getOne(item.getFilmId()).isPresent()) {
 			throw new DuplicateKeyException();
 		}
 		return dao.save(item);
@@ -74,7 +81,7 @@ public class ActorServiceImpl implements ActorService {
 	}
 
 	@Override
-	public Actor modify(Actor item) throws NotFoundException, InvalidDataException {
+	public Film modify(Film item) throws NotFoundException, InvalidDataException {
 		if (item == null) {
 			throw new InvalidDataException("Faltan los datos");
 		}
@@ -82,7 +89,7 @@ public class ActorServiceImpl implements ActorService {
 			throw new InvalidDataException(item.getErrorsString());
 		}
 
-		if (getOne(item.getActorId()).isEmpty()) {
+		if (getOne(item.getFilmId()).isEmpty()) {
 			throw new NotFoundException();
 		}
 		return dao.save(item);
@@ -90,20 +97,42 @@ public class ActorServiceImpl implements ActorService {
 	}
 
 	@Override
-	public void delete(Actor item) throws InvalidDataException {
+	public void delete(Film item) throws InvalidDataException {
 
 		if (item == null) {
 			throw new InvalidDataException("Faltan los datos");
 		}
 
-		dao.deleteById(item.getActorId());
+		dao.deleteById(item.getFilmId());
 
 	}
 
 	@Override
 	public void deleteById(Integer id) {
-		dao.deleteById(id);
 
+		dao.deleteById(id);
+		
+		
 	}
+
+	@Override
+	public List<Actor> getFilmActores(int id) {
+		
+		return dao.getFilmActores(id);
+	}
+
+	@Override
+	public List<Language> getFilmLanguages(int id) {
+		
+		return dao.getFilmLanguages(id);
+	}
+	@Override
+	public List<Category> getFilmCategorias(int id) {
+		
+		return dao.getFilmCategorias(id);
+	}
+
+	
+	
 
 }

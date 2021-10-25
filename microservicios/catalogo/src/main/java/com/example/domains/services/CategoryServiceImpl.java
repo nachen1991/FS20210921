@@ -3,10 +3,15 @@ package com.example.domains.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.xml.bind.annotation.XmlAccessorType;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import com.example.domains.contracts.services.CategoryService;
 import com.example.domains.entities.Category;
+import com.example.domains.entities.Film;
+import com.example.domains.entities.dtos.FilmShort;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
@@ -20,7 +25,7 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public List<Category> getAll() {
 		
-		return dao.findAll();
+		return dao.findAll(Sort.by("name"));
 	}
 
 	
@@ -36,7 +41,7 @@ public class CategoryServiceImpl implements CategoryService {
 			throw new InvalidDataException("Faltan los datos");
 		}
 		if(item.isInvalid()) {
-			throw new InvalidDataException(item.getErroString());
+			throw new InvalidDataException(item.getErrorsString());
 		}
 		if(getOne(item.getCategoryId()).isPresent()) {
 			throw new DuplicateKeyException();
@@ -51,7 +56,7 @@ public class CategoryServiceImpl implements CategoryService {
 			throw new InvalidDataException("Faltan los datos");
 		}
 		if(item.isInvalid()) {
-			throw new InvalidDataException(item.getErroString());
+			throw new InvalidDataException(item.getErrorsString());
 		}
 		
 		if(getOne(item.getCategoryId()).isEmpty()) {
@@ -77,5 +82,13 @@ public class CategoryServiceImpl implements CategoryService {
 		dao.deleteById(id);
 
 	}
+
+
+	@Override
+	public List<Film> getFilmCategories(int id) {
+		
+		return dao.getFilmCategories(id);
+	}
+	
 
 }

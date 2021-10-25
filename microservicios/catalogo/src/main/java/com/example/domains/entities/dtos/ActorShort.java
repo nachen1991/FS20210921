@@ -8,4 +8,13 @@ public interface ActorShort {
 	
 	@Value("#{target.lastName + ', ' + target.firstName}")
 	String getNombreCompleto();
+	
+//	int getActorId();
+//	String getFirstName();
+//	String getLastName();
+//
+//	public static ActorShort from(Actor source) {
+//		return new ActorShort(source.getActorId(), source.getFirstName(), source.getLastName());
+//	}
+	
 }

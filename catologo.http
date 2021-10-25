@@ -1,0 +1,252 @@
+GET http://localhost:8010/params/17?nom=hola
+Accept-Language: cristino
+
+###
+
+
+GET http://localhost:8010/params/2?nom=adios
+Accept-Language: es-es
+Accept: text/xml
+
+###
+
+
+POST  http://localhost:8010/salida
+Accept-Language: es-es
+Accept: text/plain, application/json
+Content-Type: application/json
+
+{
+  "actorId": 7,
+  "firstName": "Nuevo",
+  "lastName": "Actoooooooooooooooor"
+}
+
+###
+
+POST  http://localhost:8010/salida
+Accept-Language: es-es
+Accept: text/xml, application/json
+Content-Type: application/xml
+
+<ActorDTO>
+  <actorId>0</actorId>
+  <firstName>Pepito</firstName>
+  <lastName>Grillo</lastName>
+</ActorDTO>
+
+
+###
+POST  http://localhost:8010/salida
+Accept-Language: es-es
+Accept: text/plain, application/json
+Content-Type: application/application/x-www-form-urlencoded
+
+id=0&nombre=Pepito&apellidos=Grillo
+
+
+###
+
+get  http://localhost:8010/actores/1/peliculas
+
+###
+
+get  http://localhost:8010/actores/1/peliculas
+
+
+###
+
+get  http://localhost:8010/actores?page=0&size=10&sort=firstName
+
+###
+
+GET http://localhost:8010/actores/3
+Content-Type: application/json
+
+{
+  "id": 0,
+  "nombre": "",
+  "apellidos": "coton"
+}
+
+###
+
+put http://localhost:8010/actores/206
+Content-Type: application/json
+
+{
+  "id": 206,
+  "nombre": "CARMELO",
+  "apellidos": "COTON"
+}
+
+###
+
+delete  http://localhost:8010/actores/206
+
+
+###
+
+get  http://localhost:8010/peliculas/1001
+
+###
+
+get  http://localhost:8010/peliculas/1/actores
+
+### 
+
+
+get  http://localhost:8010/peliculas/2/idiomas
+
+
+### 
+
+get  http://localhost:8010/peliculas/1/categorias
+
+###
+
+post http://localhost:8010/peliculas/
+Content-Type: application/json
+Accept-Language: es-es
+Accept: text/plain, application/json
+
+
+{
+  "id":0,
+  "titulo":"Erase una vez en Java",
+  "descripcion": "Mundo Java",
+  "idioma": {"languageId": 1},
+  "ultima_actualizacion": "2021-10-25",
+  "duracion": 3,
+  "rate": 4.3,
+  "coste": 4.2
+
+}
+
+###
+
+put http://localhost:8010/peliculas/1001
+Content-Type: application/json
+Accept-Language: es-es
+Accept: text/plain, application/json
+
+
+{
+  "id":1001,
+  "titulo":"Erase una vez en Java",
+  "descripcion": "Mundo Java en Disney",
+  "idioma": {"languageId": 8},
+  "ultima_actualizacion": "2021-10-25",
+  "duracion": 3,
+  "rate": 4.3,
+  "coste": 4.2
+
+
+}
+
+###
+
+GET http://localhost:8010/categorias/
+
+###
+
+
+GET http://localhost:8010/categorias/1/peliculas
+Content-Type: application/json
+
+###
+post http://localhost:8010/categorias/
+Accept-Language: es-es
+Accept: text/plain, application/json
+Content-Type: application/json
+
+{
+  "id": 0,
+  "categoria": "CienciaFiccion"
+  
+}
+
+###
+put http://localhost:8010/categorias/19
+Accept-Language: es-es
+Accept: text/plain, application/json
+Content-Type: application/json
+
+{
+  "id": 19,
+  "categoria": "Marvel"
+  
+}
+
+
+### 
+
+delete http://localhost:8010/categorias/20
+###
+
+GET http://localhost:8010/idiomas
+
+###
+post http://localhost:8010/idiomas/
+Accept-Language: es-es
+Accept: text/plain, application/json
+Content-Type: application/json
+
+{
+  "languageId": 0,
+  "idioma": "cantones",
+  "ultima_actualizacion": "2021-10-25"
+
+  
+}
+
+###
+
+
+put http://localhost:8010/idiomas/7
+Accept-Language: es-es
+Accept: text/plain, application/json
+Content-Type: application/json
+
+{
+  "languageId": 7,
+  "idioma": "Español",
+  "ultima_actualizacion": "2020-10-25"
+  
+}
+
+###
+
+GET http://localhost:8010/idiomas/
+###
+
+GET http://localhost:8010/idiomas/1/peliculas
+
+
+###
+
+put http://localhost:8010/peliculas/1001
+Content-Type: application/json
+Accept-Language: es-es
+Accept: text/plain, application/json
+
+
+{
+  "id":1001,
+  "titulo":"Erase una vez en Java",
+  "descripcion": "Mundo Java en Disney",
+  "idioma": {"languageId": 7},
+  "ultima_actualizacion": "2021-10-25",
+  "duracion": 4,
+  "rate": 4.3,
+  "coste": 4.2
+
+}
+
+
+###
+
+DELETE  http://localhost:8010/peliculas/1001
+
+###
+DELETE  http://localhost:8010/idiomas/7

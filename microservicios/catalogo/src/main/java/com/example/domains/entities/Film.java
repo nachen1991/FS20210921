@@ -2,6 +2,10 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.PastOrPresent;
+
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 
 import com.example.domains.core.EntityBase;
 
@@ -30,6 +34,8 @@ public class Film extends EntityBase<Film> implements Serializable {
 	private String description;
 
 	@Column(name="last_update")
+	@Generated(value = GenerationTime.ALWAYS)
+	@PastOrPresent
 	private Timestamp lastUpdate;
 
 	private int length;
@@ -62,11 +68,11 @@ public class Film extends EntityBase<Film> implements Serializable {
 
 	//bi-directional many-to-one association to FilmActor
 	@OneToMany(mappedBy="film")
-	private List<FilmActor> filmActors;
+	private List<FilmActor> filmActors = new ArrayList<FilmActor>();
 
 	//bi-directional many-to-one association to FilmCategory
 	@OneToMany(mappedBy="film")
-	private List<FilmCategory> filmCategories = new ArrayList<FilmCategory>();;
+	private List<FilmCategory> filmCategories = new ArrayList<FilmCategory>();
 
 	public Film() {
 	}
@@ -79,12 +85,39 @@ public class Film extends EntityBase<Film> implements Serializable {
 
 
 
-	public Film(int filmId, String title) {
+	public Film(int filmId, String title, String description) {
 		super();
 		this.filmId = filmId;
 		this.title = title;
+		this.description = description;
 	}
 
+
+
+	public Film(int filmId, String title, Language language) {
+		super();
+		this.filmId = filmId;
+		this.title = title;
+		this.language = language;
+	}
+	
+	
+
+
+	public Film(int filmId,String title, String description,Language language, @PastOrPresent Timestamp lastUpdate, byte rentalDuration,
+			BigDecimal rentalRate, BigDecimal replacementCost  ) {
+		super();
+		this.filmId = filmId;
+		this.title = title;
+		this.description = description;
+		this.language = language;
+		this.lastUpdate = lastUpdate;
+		this.rentalDuration = rentalDuration;
+		this.rentalRate = rentalRate;
+		this.replacementCost = replacementCost;
+		
+		
+	}
 
 
 	public int getFilmId() {
