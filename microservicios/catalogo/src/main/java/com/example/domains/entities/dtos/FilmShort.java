@@ -3,11 +3,15 @@ package com.example.domains.entities.dtos;
 import com.example.domains.entities.Film;
 import com.example.domains.entities.FilmActor;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiModelProperty.AccessMode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Value;
 
+@ApiModel(value = "PeliculaCorto", description = "Version corta de las peliculas")
+@Value
 @Data
 @AllArgsConstructor
 public class FilmShort {

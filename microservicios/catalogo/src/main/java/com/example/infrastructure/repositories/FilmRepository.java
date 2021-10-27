@@ -10,9 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.example.domains.entities.Actor;
-import com.example.domains.entities.Category;
 import com.example.domains.entities.Film;
-import com.example.domains.entities.Language;
 
 public interface FilmRepository extends JpaRepository<Film, Integer> {
 
@@ -23,11 +21,11 @@ public interface FilmRepository extends JpaRepository<Film, Integer> {
 	@Query("Select fa.actor FROM FilmActor fa WHERE fa.film.filmId = ?1 ")
 	List<Actor> getFilmActores(int id);
 	
-	@Query("Select f.language FROM Film f WHERE f.filmId = ?1 ")
-	List<Language> getFilmLanguages(int id);
+	@Query("Select f.language.name FROM Film f WHERE f.filmId = ?1 ")
+	List<String> getFilmLanguages(int id);
 	
-	@Query("Select fc.category FROM FilmCategory fc WHERE fc.film.filmId = ?1 ")
-	List<Category> getFilmCategorias(int id);
+	@Query("Select fc.category.name FROM FilmCategory fc WHERE fc.film.filmId = ?1 ")
+	List<String> getFilmCategorias(int id);
 	
 	List<Film> findByLastUpdateGreaterThanEqualOrderByLastUpdate(Timestamp fecha);
 }

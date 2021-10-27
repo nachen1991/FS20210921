@@ -20,6 +20,7 @@ import com.example.domains.entities.Film;
 import com.example.domains.entities.Language;
 import com.fasterxml.jackson.annotation.JsonView;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +28,8 @@ import lombok.NoArgsConstructor;
 import lombok.Value;
 
 @RestController
+@Api(value = "/", description = "Catalogo", produces = "application/json, application/xml", consumes = "application/json, application/xml")
+
 @RequestMapping(path = "/")
 public class CatalogoResource {
 	@Autowired

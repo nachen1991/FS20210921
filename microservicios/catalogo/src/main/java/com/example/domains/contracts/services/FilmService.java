@@ -14,8 +14,8 @@ public interface FilmService extends ProjectionDomainService<Film, Integer> {
 
 	List<Actor> getFilmActores(int id);
 	
-	List<Language> getFilmLanguages(int id);
-	List<Category> getFilmCategorias(int id);
+	List<String> getFilmLanguages(int id);
+	List<String> getFilmCategorias(int id);
 	
 	List<Film> findByLastUpdateGreaterThanEqualOrderByLastUpdate(Timestamp fecha);
 

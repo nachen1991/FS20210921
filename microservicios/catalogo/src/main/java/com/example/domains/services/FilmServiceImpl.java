@@ -121,12 +121,12 @@ public class FilmServiceImpl implements FilmService {
 	}
 
 	@Override
-	public List<Language> getFilmLanguages(int id) {
+	public List<String> getFilmLanguages(int id) {
 		
 		return dao.getFilmLanguages(id);
 	}
 	@Override
-	public List<Category> getFilmCategorias(int id) {
+	public List<String> getFilmCategorias(int id) {
 		
 		return dao.getFilmCategorias(id);
 	}

@@ -1,34 +1,22 @@
 package com.example;
 
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.Optional;
-
 import javax.transaction.Transactional;
 
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 import com.example.domains.contracts.services.ActorService;
 import com.example.domains.contracts.services.CategoryService;
-import com.example.domains.entities.Actor;
-import com.example.domains.entities.Category;
-import com.example.domains.entities.Film;
-import com.example.domains.entities.dtos.ActorDTO;
-import com.example.domains.entities.dtos.ActorShort;
-import com.example.domains.entities.dtos.CategoryDTO;
-import com.example.domains.entities.dtos.CategoryShort;
-import com.example.domains.services.ActorServiceImpl;
 import com.example.infrastructure.repositories.ActorRepository;
 import com.example.infrastructure.repositories.CategoryRepository;
-import com.example.ioc.ServicioMockImpl;
-
-import lombok.experimental.var;
 
 @EnableEurekaClient
 @SpringBootApplication
@@ -37,7 +25,14 @@ public class DemoApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
-
+	
+	@Bean
+	//@LoadBalanced
+	public RestTemplate restTemplate(RestTemplateBuilder builder) {
+		return builder.build();
+	}
+	
+	
 	@Autowired
 	ActorService srv;
 	@Autowired

@@ -32,6 +32,7 @@ public class FilmDTO {
 	private String languageVO; 
 	@ApiModelProperty(value = "Duración de la pelicula", required = true)
 	private int length;
+	@ApiModelProperty(value = "Clasificación de la pelicula", allowableValues = "G, PG, PG-13, R, NC-17")
 	private String rating;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy")
 	private Short releaseYear;

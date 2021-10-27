@@ -19,9 +19,8 @@ import com.example.ioc.Servicio;
 import com.example.ioc.ServicioMockImpl;
 
 @SpringBootTest
-@ActiveProfiles("test")
+//@ActiveProfiles("test")
 class DemoApplicationTests {
-
 	@Autowired
 //	@Qualifier("uno")
 	Servicio srv;
@@ -31,16 +30,16 @@ class DemoApplicationTests {
 	
 	@Test
 	void inyeccionesTaza() {
-		assertEquals("Soy una taza", srv.saluda());
+		assertEquals("SOY UNA TAZA", srv.saluda());
 		assertEquals("HOLA", formato.formatea("hola"));
 		assertEquals(1, formato.getCont());
 	}
+
 	@Test
 	void inyeccionesTetera() {
 		assertEquals("Soy una tetera", srv.saluda());
 		assertEquals("HOLA", formato.formatea("hola"));
 		assertEquals(1, formato.getCont());
-		//assertEquals("Soy una tetera", srv.saluda());
 	}
 	
 	public static class IoCTestConfig {

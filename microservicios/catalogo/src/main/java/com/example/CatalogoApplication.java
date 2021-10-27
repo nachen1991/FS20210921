@@ -24,7 +24,7 @@ public class CatalogoApplication {
 	public Docket api() {                
    	    return new Docket(DocumentationType.OAS_30)          
 	      .select()
-	      .apis(RequestHandlerSelectors.basePackage("com.example.catalogo.domain.resources"))
+	      .apis(RequestHandlerSelectors.basePackage("com.example.application.resource"))
 	      .paths(PathSelectors.ant("/**"))
 	      .build()
 	      .apiInfo(new ApiInfoBuilder()
