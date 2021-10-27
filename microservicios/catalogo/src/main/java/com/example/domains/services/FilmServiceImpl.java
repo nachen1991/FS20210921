@@ -1,5 +1,6 @@
 package com.example.domains.services;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,8 +14,6 @@ import com.example.domains.entities.Actor;
 import com.example.domains.entities.Category;
 import com.example.domains.entities.Film;
 import com.example.domains.entities.Language;
-import com.example.domains.entities.dtos.ActorDTO;
-import com.example.domains.entities.dtos.ActorShort;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
@@ -131,6 +130,16 @@ public class FilmServiceImpl implements FilmService {
 		
 		return dao.getFilmCategorias(id);
 	}
+
+	@Override
+	public List<Film> findByLastUpdateGreaterThanEqualOrderByLastUpdate(Timestamp fecha) {
+		
+		return dao.findByLastUpdateGreaterThanEqualOrderByLastUpdate(fecha);
+	}
+
+	
+	
+	
 
 	
 	

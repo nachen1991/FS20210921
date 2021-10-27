@@ -1,8 +1,10 @@
 package com.example.domains.core.services.contracts;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.domains.entities.Category;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
@@ -14,4 +16,5 @@ public interface DomainService<E, K> {
 	E modify(E item) throws NotFoundException, InvalidDataException;
 	void delete(E item) throws InvalidDataException;
 	void deleteById(K id);
+	
 }

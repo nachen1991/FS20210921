@@ -1,9 +1,8 @@
 package com.example.domains.services;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
-
-import javax.xml.bind.annotation.XmlAccessorType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.example.domains.contracts.services.CategoryService;
 import com.example.domains.entities.Category;
 import com.example.domains.entities.Film;
-import com.example.domains.entities.dtos.FilmShort;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
@@ -88,6 +86,11 @@ public class CategoryServiceImpl implements CategoryService {
 	public List<Film> getFilmCategories(int id) {
 		
 		return dao.getFilmCategories(id);
+	}
+	
+	@Override
+	public List<Category> novedades(Timestamp fecha) {
+		return dao.findByLastUpdateGreaterThanEqualOrderByLastUpdate(fecha);
 	}
 	
 

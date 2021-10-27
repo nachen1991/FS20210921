@@ -11,6 +11,7 @@ import com.example.domains.core.EntityBase;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -25,19 +26,25 @@ import java.util.List;
 @NamedQuery(name="Language.findAll", query="SELECT l FROM Language l")
 public class Language extends EntityBase<Language> implements Serializable {
 	private static final long serialVersionUID = 1L;
+	public static class Partial {}
+    public static class Complete extends Partial {}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="language_id")
+	@JsonView(Language.Partial.class)
 	private int languageId;
 
 	@Column(name="last_update")
-	@JsonFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy hh:mm:ss")
+	@JsonView(Language.Complete.class)
 	@JsonProperty("ultima_actualizacion")
 	@Generated(value = GenerationTime.ALWAYS)
 	@PastOrPresent
 	private Timestamp lastUpdate;
+	
 	@JsonProperty("idioma")
+	@JsonView(Language.Partial.class)
 	private String name;
 
 	//bi-directional many-to-one association to Film
@@ -54,6 +61,12 @@ public class Language extends EntityBase<Language> implements Serializable {
 	}
 
 	
+	public Language(int languageId) {
+		super();
+		this.languageId = languageId;
+	}
+
+
 	public Language(int languageId, String name, Timestamp lastUpdate) {
 		super();
 		this.languageId = languageId;

@@ -120,7 +120,7 @@ public class Actor extends EntityBase<Actor> implements Serializable {
 	public FilmActor addFilmActor(Film film) {
 		if(film == null)
 			throw new IllegalArgumentException("La pelicula es obligatoria");
-		var filmActor = new FilmActor(this, film);
+		var filmActor = new FilmActor(film, this);
 		getFilmActors().add(filmActor);
 		return filmActor;
 	}

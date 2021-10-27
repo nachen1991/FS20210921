@@ -1,6 +1,7 @@
 package com.example.application.resource;
 
 import java.net.URI;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -88,6 +89,10 @@ public class LanguageResource {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable int id) {
 		srv.deleteById(id);
+	}
+
+	public List<Language> novedades(Timestamp fecha) {
+		return srv.findByLastUpdateGreaterThanEqualOrderByLastUpdate(fecha);
 	}
 
 }

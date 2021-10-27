@@ -1,5 +1,6 @@
 package com.example.infrastructure.repositories;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -12,7 +13,6 @@ import com.example.domains.entities.Actor;
 import com.example.domains.entities.Category;
 import com.example.domains.entities.Film;
 import com.example.domains.entities.Language;
-import com.example.domains.entities.dtos.ActorDTO;
 
 public interface FilmRepository extends JpaRepository<Film, Integer> {
 
@@ -28,4 +28,6 @@ public interface FilmRepository extends JpaRepository<Film, Integer> {
 	
 	@Query("Select fc.category FROM FilmCategory fc WHERE fc.film.filmId = ?1 ")
 	List<Category> getFilmCategorias(int id);
+	
+	List<Film> findByLastUpdateGreaterThanEqualOrderByLastUpdate(Timestamp fecha);
 }

@@ -1,5 +1,6 @@
 package com.example.infrastructure.repositories;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -21,4 +22,6 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
 	
 	@Query("Select fc.film FROM FilmCategory fc WHERE fc.category.categoryId = ?1 ")
 	List<Film> getFilmCategories(int id);
+	
+	List<Category> findByLastUpdateGreaterThanEqualOrderByLastUpdate(Timestamp fecha);
 }

@@ -1,5 +1,6 @@
 package com.example.infrastructure.repositories;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -10,7 +11,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.example.domains.entities.Film;
 import com.example.domains.entities.Language;
-import com.example.domains.entities.dtos.FilmShort;
 
 
 public interface LanguageRepository extends JpaRepository<Language, Integer> {
@@ -20,5 +20,7 @@ public interface LanguageRepository extends JpaRepository<Language, Integer> {
 	
 	@Query("Select l.films FROM Language l WHERE l.languageId = ?1 ")
 	List<Film> getLanguageFilms(int id);
+	
+	List<Language> findByLastUpdateGreaterThanEqualOrderByLastUpdate(Timestamp fecha);
 
 }

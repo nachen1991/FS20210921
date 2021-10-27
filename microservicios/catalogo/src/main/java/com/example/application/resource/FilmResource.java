@@ -1,6 +1,7 @@
 package com.example.application.resource;
 
 import java.net.URI;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,13 +27,19 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.domains.contracts.services.FilmService;
 import com.example.domains.entities.Category;
+import com.example.domains.entities.Film;
 import com.example.domains.entities.Language;
 import com.example.domains.entities.dtos.ActorDTO;
 import com.example.domains.entities.dtos.FilmDTO;
+import com.example.domains.entities.dtos.FilmShort;
 import com.example.exceptions.BadRequestException;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
+import com.example.infrastructure.repositories.FilmRepository;
+
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 import org.springframework.http.HttpStatus;
 
@@ -41,15 +48,22 @@ import org.springframework.http.HttpStatus;
 public class FilmResource {
 	@Autowired
 	FilmService srv;
+	@Autowired
+	FilmRepository dao;
 
-	@GetMapping
-	public List<FilmDTO> getAll(@RequestParam(required = false) String sort) {
+	
+	
+	
+	@ApiOperation(value = "Listado con la versión mínima de las peliculas")
+	@GetMapping(params = "mode=short")
+	public List<FilmShort> getAll(@ApiParam(allowEmptyValue = true, required = false, allowableValues = "details,short")@RequestParam(required = false) String sort) {
 		if(sort== null)
-			return srv.getByProjection(FilmDTO.class);
+			return srv.getByProjection(FilmShort.class);
 		else
-			return (List<FilmDTO>) srv.getByProjection(Sort.by(sort), FilmDTO.class);
+			return (List<FilmShort>) srv.getByProjection(Sort.by(sort), FilmShort.class);
 	}
 
+	@ApiOperation(value = "Listado de las peliculas")
 	@GetMapping(params = "page")
 	public Page<FilmDTO> getAllPageable(Pageable item) {
 		return srv.getByProjection(item, FilmDTO.class);
@@ -119,6 +133,10 @@ public class FilmResource {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable int id) {
 		srv.deleteById(id);
+	}
+	
+	public List<Film> novedades(Timestamp fecha) {
+		return srv.findByLastUpdateGreaterThanEqualOrderByLastUpdate(fecha);
 	}
 
 }

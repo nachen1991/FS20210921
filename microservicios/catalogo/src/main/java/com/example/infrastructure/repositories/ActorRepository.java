@@ -1,5 +1,6 @@
 package com.example.infrastructure.repositories;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -14,5 +15,5 @@ public interface ActorRepository extends JpaRepository<Actor, Integer> {
 	<T> Iterable<T> findByActorIdIsNotNull(Sort sort, Class<T> type);
 	<T> Page<T> findByActorIdIsNotNull(Pageable pageable, Class<T> type);
 	
-	
+	List<Actor> findByLastUpdateGreaterThanEqualOrderByLastUpdate(Timestamp fecha);
 }

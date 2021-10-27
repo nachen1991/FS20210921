@@ -2,8 +2,6 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
 import java.sql.Timestamp;
 
 
@@ -43,10 +41,11 @@ public class FilmActor implements Serializable {
 	}
 
 
-	public FilmActor(Actor actor, Film film) {
+	public FilmActor(Film film, Actor actor) {
 		super();
 		this.actor = actor;
 		this.film = film;
+		setId(new FilmActorPK(film.getFilmId(), actor.getActorId()));
 	}
 
 
