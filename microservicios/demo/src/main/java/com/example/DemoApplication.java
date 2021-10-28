@@ -47,8 +47,8 @@ public class DemoApplication implements CommandLineRunner {
 	@Autowired
 	CategoryService srv2;
 
-	@Value("${mi.propia.clave}")
-	String name;
+//	@Value("${mi.propia.clave}")
+//	String name;
 
 	@Autowired
 	ActorRepository dao;

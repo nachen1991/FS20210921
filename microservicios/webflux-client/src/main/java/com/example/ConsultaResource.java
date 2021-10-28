@@ -1,6 +1,9 @@
 package com.example;
 
 import java.util.Date;
+
+import javax.swing.plaf.basic.BasicComboBoxUI.ItemHandler;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -54,6 +57,8 @@ public class ConsultaResource {
 				  .uri("/api/contactos/{id}", "3")
 				  .retrieve()
 				  .bodyToMono(Contacto.class);
+		var obs = Flux.merge(contacto1, contacto2, contacto3);
+		obs.subscribe(ItemHandler -> {});
 		return Flux.merge(contacto1, contacto2, contacto3);
 	}
 

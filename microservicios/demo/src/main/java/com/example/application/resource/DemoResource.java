@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -110,6 +111,14 @@ public class DemoResource {
 	public String traeBalanceado(){
 //		return restLB.getForObject("lb://catalogo-service/", String.class);
 		return proxy.getRaiz();
+	}
+	@Value("${jwt.secret}")
+	String secreto;
+	
+	@GetMapping("/config")
+	public String traeConfig(){
+//		return restLB.getForObject("lb://catalogo-service/", String.class);
+		return secreto;
 	}
 
 }

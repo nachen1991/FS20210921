@@ -1,17 +1,13 @@
 package com.example;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
@@ -20,8 +16,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -84,7 +78,7 @@ public class ContactosResources {
 	static {
 		try {
 			store = (new ObjectMapper()).readValue(
-					new URL("file:C:\\curso\\samples\\webflux-server\\src\\main\\resources\\contactos.json"), 
+					new URL("file:C:\\curso\\FS20210921\\microservicios\\webflux-server\\src\\main\\resources\\contactos.json"), 
 					new TypeReference<List<Contacto>>() {});
 			store.sort((a, b) -> a.getId() - b.getId());
 		} catch (JsonParseException e) {
