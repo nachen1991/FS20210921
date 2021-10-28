@@ -32,10 +32,13 @@ public abstract class EntityBase<E> {
 		return sb.toString();
 	}
 
+	@JsonIgnore
+	@Transient
 	public boolean isValid() {
 		return getErrors().size() == 0;
 	}
-	
+	@JsonIgnore
+	@Transient
 	public boolean isInvalid() {
 		return !isValid();
 	}
