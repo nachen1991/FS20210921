@@ -2,6 +2,7 @@ package com.example.application.resource;
 
 import java.util.List;
 
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,7 +31,7 @@ import lombok.Data;
 
 @RestController
 public class DemoResource {
-	
+	private static final Logger LOGGER = Logger.getLogger(DemoResource.class.getName());
 	@GetMapping("/params/{id}")
 	public String cotilla(
 	        @PathVariable String id,
@@ -117,7 +118,7 @@ public class DemoResource {
 	
 	@GetMapping("/config")
 	public String traeConfig(){
-//		return restLB.getForObject("lb://catalogo-service/", String.class);
+		LOGGER.warn("La configuracion es:" + secreto);
 		return secreto;
 	}
 

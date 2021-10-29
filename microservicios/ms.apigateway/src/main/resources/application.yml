@@ -28,26 +28,26 @@ spring:
         predicates:
           - Path=/catalogo/**
         filters:
-          - RewritePath=/catalogo/*, /
+          - RewritePath=/catalogo, /
           - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, ,
       - id: serv-demos
         uri: lb://demo-service
         predicates:
           - Path=/demos/**
         filters:
-          - RewritePath=/demos/*, /
+          - RewritePath=/demos, /
       - id: serv-contactos
         uri: lb://contactos-service
         predicates:
           - Path=/contactos/**
         filters:
-          - RewritePath=/contactos/*, /api/contactos
+          - RewritePath=/contactos, /api/contactos
       - id: serv-search
         uri: https://www.google.com/
         predicates:
           - Path=/search/**
         filters:
-          - RewritePath=/search/*, /
+          - RewritePath=/search, /
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
