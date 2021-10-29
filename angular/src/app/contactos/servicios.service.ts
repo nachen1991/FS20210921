@@ -105,7 +105,7 @@ export class ContactosViewModelService{
   public delete(key: any): void {
     if (!window.confirm('¿Seguro?')) { return; }
     this.dao.remove(key).subscribe(
-    data => this.list(),
+    data => this.list(),//this.load(),
     err => this.notify.add(err.message)
     );
   }
@@ -140,7 +140,23 @@ export class ContactosViewModelService{
     break;
     }
   }
-
+  // page = 0;
+  // totalPages = 0;
+  // totalRows = 0;
+  // rowsPerPage = 8;
+  // load(page: number = -1) {
+  //   if(page < 0) page = this.page
+  //   this.dao.page(page, this.rowsPerPage).subscribe(
+  //     rslt => {
+  //       this.page = rslt.page;
+  //       this.totalPages = rslt.pages;
+  //       this.totalRows = rslt.rows;
+  //       this.listado = rslt.list;
+  //       this.modo = 'list';
+  //     },
+  //     err => this.notify.add(err.message)
+  //   )
+  // }
 
 
 

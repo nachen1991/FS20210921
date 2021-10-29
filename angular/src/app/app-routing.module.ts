@@ -24,7 +24,7 @@ const routes: Routes = [
   children: [
   {path: '', component: ContactosListComponent, data: { pageTitle: 'Contactos' } },
   { path: 'add', component: ContactosAddComponent, canActivate: [AuthGuard] },
-  { path: ':id/edit', component: ContactosEditComponent, canActivate: [AuthGuard] },
+  { path: ':id/edit', component: ContactosEditComponent, /*canActivate: [AuthGuard] */},
   { path: ':id', component: ContactosViewComponent },
   { path: ':id/:kk', component: ContactosViewComponent },
 
