@@ -5,18 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ActoresComponent } from './actores/actores.component';
 import { PeliculasComponent } from './peliculas/peliculas.component';
+import { MainModule } from './main';
+import { CommonComponentsModule } from './common-components';
+import { CommonServicesModule } from './common-services';
+import { SecurityModule } from './security';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ActoresComponent,
-    PeliculasComponent
-  ],
+  declarations: [AppComponent, ActoresComponent, PeliculasComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MainModule,
+    SecurityModule,
+    CommonComponentsModule,
+    CommonServicesModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
