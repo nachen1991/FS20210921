@@ -1,0 +1,47 @@
+<header class="blog-header py-3">
+  <div class="row flex-nowrap justify-content-between align-items-center">
+    <div class="col-4 pt-1">
+      <a class="btn btn-sm btn-outline-secondary" routerLink="add">Añadir nueva entrada</a>
+    </div>
+    <div class="col-4 text-center">
+      <a class="blog-header-logo text-dark" href="#">Angular Blogs</a>
+    </div>
+    <div class="col-4 d-flex justify-content-end align-items-center">
+      <div class="md-form">
+        <input type="search" [(ngModel)]="searchText" placeholder="Search text">
+      </div>
+      <!-- <ul *ngFor="let item of VM.Listado | filter: searchText">
+        <li></li>
+      </ul> -->
+
+    </div>
+  </div>
+</header>
+
+
+<div *ngFor="let item of VM.Listado | paginate: { itemsPerPage: 10, currentPage: page }" >
+  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <img
+                class="rounded-circle float-left"
+                src="{{ item.fotourl }}"
+                alt="Foto de {{ item.titulo}}"
+                width="175"
+                height="175"
+              />
+      <h1 class="display-4 fst-italic"> <a
+        type="button"
+        class="btn btn-link btn-lg px-0"
+        routerLink="{{item.id}}/{{item.titulo}}"
+      >
+        {{ item.titulo }}
+    </a></h1>
+    <b>Autor:</b> {{ item.autor}} <b>Fecha:</b> {{ item.fecha }}
+      <p class="lead my-3">{{item.texto|elipsis:50 }}</p>
+      <p class="lead mb-0"><a [routerLink]="[item.id,'view']" class="text-white fw-bold">Continue reading...</a></p>
+    </div>
+  </div>
+  </div>
+<pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+
+

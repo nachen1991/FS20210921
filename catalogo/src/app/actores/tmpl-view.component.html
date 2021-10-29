@@ -1,0 +1,30 @@
+<article class="blog-post">
+  <h2 class="blog-post-title">{{ VM.Elemento.titulo }}</h2>
+  <p class="blog-post-meta">
+    {{ VM.Elemento.fecha
+    }} by
+    <i class="fas fa-user mr-2">{{ VM.Elemento.autor }} </i>
+  </p>
+  <img
+    src="{{ VM.Elemento.fotourl }}"
+    alt="Foto de {{ VM.Elemento.titulo }}"
+    class="rounded"
+    width="175"
+    height="175"
+  />
+
+  <p>{{ VM.Elemento.texto }}</p>
+
+ 
+ <button type="button" *ngIf="VM.auth.isAutenticated" class="btn btn-info" (click)="VM.megusta(VM.Elemento.megusta)">
+  <i class="fas fa-smile-o mr-2"></i>Me gusta {{VM.Elemento.megusta}}
+  </button>
+  <br/>
+  <button class="btn btn-success" routerLink="../edit">
+    <i class="fas fa-pen">Editar</i>
+  </button>
+  <button
+    class="btn btn-secondary"
+    (click)="VM.cancel()"
+  >Volver</button>
+</article>
