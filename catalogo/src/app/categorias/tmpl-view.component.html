@@ -1,24 +1,22 @@
-<h1>Actor</h1>
+<h1>Categoria</h1>
 <div class="row">
   <div class="col-xs-12 col-sm-6 col-md-6">
     <div class="well well-sm">
       <div class="row">
         <div class="col-sm-6 col-md-8">
-          <h4>
-            Datos del actor
-          </h4>
           <p>
-            Nombre {{ VM.Elemento.nombre }}
-            <br />
-            Apellidos {{ VM.Elemento.apellidos }}
-            <br />
+            {{ VM.Elemento.name }}
+
+
           </p>
-          <h6>Peliculas: </h6>
+          <h4>Peliculas de esa categoria: </h4>
           <p *ngFor="let item of VM.Elemento.peliculas">
-           <a [routerLink]="['../../../peliculas/'+item.filmId,'view']"> {{item.title}} </a>
+            {{item.title}}
             <br />
 
           </p>
+
+
           <div class="btn-group">
 
             <button class="btn btn-success" routerLink="../edit">

@@ -5,21 +5,22 @@ import { CommonServicesModule } from '../common-services';
 import { MyCoreModule } from 'src/lib/my-core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { ACTORES_COMPONENTES } from './componente.component';
+import { PELICULAS_COMPONENTES } from './componente.component';
 import {PaginatorModule} from 'primeng/paginator';
 
 
 
 @NgModule({
   declarations: [
-    ACTORES_COMPONENTES,
+    PELICULAS_COMPONENTES,
   ],
-  exports: [ACTORES_COMPONENTES,
+  exports: [PELICULAS_COMPONENTES,
   ],
   imports: [
-    CommonModule, FormsModule, RouterModule.forChild([]),PaginatorModule,
+    CommonModule, FormsModule, RouterModule.forChild([]),
    MyCoreModule, CommonServicesModule, CommonComponentsModule,
+   PaginatorModule,
     ],
 
 })
-export class ActoresModule { }
+export class PeliculasModule { }

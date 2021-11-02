@@ -2,6 +2,7 @@ package com.example.domains.entities.dtos;
 
 import com.example.domains.entities.Film;
 import com.example.domains.entities.FilmActor;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -16,8 +17,10 @@ import lombok.Value;
 @AllArgsConstructor
 public class FilmShort {
 	@ApiModelProperty(value = "Identificador de la pelicula", required = true, accessMode = AccessMode.READ_ONLY)
+	
 	private int filmId;
 	@ApiModelProperty(value = "Titulo de la pelicula", required = true)
+	
 	private String title;
 
 	public static FilmShort from(Film source) {

@@ -6,8 +6,7 @@ import { MyCoreModule } from 'src/lib/my-core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ACTORES_COMPONENTES } from './componente.component';
-import {PaginatorModule} from 'primeng/paginator';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -17,7 +16,7 @@ import {PaginatorModule} from 'primeng/paginator';
   exports: [ACTORES_COMPONENTES,
   ],
   imports: [
-    CommonModule, FormsModule, RouterModule.forChild([]),PaginatorModule,
+    CommonModule, FormsModule, RouterModule.forChild([]),NgxPaginationModule,
    MyCoreModule, CommonServicesModule, CommonComponentsModule,
     ],
 

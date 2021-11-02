@@ -35,7 +35,7 @@ import { LibrosModule } from './libros';
 
   ],
   imports: [
-    BrowserModule, FormsModule, HttpClientModule, ContactosModule, LibrosModule,
+    BrowserModule, FormsModule, HttpClientModule, ContactosModule, LibrosModule,BlogModule,
     AppRoutingModule, MyCoreModule, MainModule, CommonServicesModule, SecurityModule, CommonComponentsModule,
   ],
   providers: [

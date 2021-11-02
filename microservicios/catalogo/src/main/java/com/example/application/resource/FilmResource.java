@@ -58,7 +58,7 @@ public class FilmResource {
 	FilmRepository dao;
 
 	@ApiOperation(value = "Listado con la versión mínima de las peliculas")
-	@GetMapping(params = "mode=short")
+	@GetMapping()
 	public List<FilmShort> getAll(
 			@ApiParam(allowEmptyValue = true, required = false, allowableValues = "details,short") @RequestParam(required = false) String sort) {
 		if (sort == null)

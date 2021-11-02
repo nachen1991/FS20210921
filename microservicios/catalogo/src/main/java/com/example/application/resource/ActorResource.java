@@ -55,8 +55,8 @@ public class ActorResource {
 	}
 	@ApiOperation(value = "Listado de los actores")
 	@GetMapping(params = "page")
-	public Page<ActorDTO> getAllPageable(Pageable item) {
-		return srv.getByProjection(item, ActorDTO.class);
+	public Page<ActorShort> getAllPageable(Pageable item) {
+		return srv.getByProjection(item, ActorShort.class);
 	}
 
 	@ApiOperation(value = "Recupera la versión completa de un actor")

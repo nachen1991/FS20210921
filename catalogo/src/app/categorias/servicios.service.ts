@@ -11,10 +11,9 @@ import { AuthService, AUTH_REQUIRED } from '../security';
 
 
 
-export class Actores {
+export class Categorias {
   id: number = 0;
-  firstName: string | null = null;
-  lastName: string | null = null;
+  categoria: string | null = null;
   lastUpdate: string | null = null;
 
 }
@@ -46,40 +45,28 @@ export abstract class RESTDAOService<T, K> {
 @Injectable({
   providedIn: 'root'
  })
- export class ActoresDAOService extends RESTDAOService<any, any> {
+ export class CategoriasDAOService extends RESTDAOService<any, any> {
 
   constructor(http: HttpClient) {
-  super(http, 'actores', {
+  super(http, 'categorias', {
   context: new HttpContext().set(AUTH_REQUIRED, true)
   });
-  }
-  page(page: number, rows: number = 20): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
-    return new Observable(subscriber => {
-      this.http.get<any>(`${this.baseUrl}?page=${page}&size=${rows}&sort=lastName`, this.option)
-        .subscribe(
-          data => {
-            subscriber.next({ page: data.number, pages: data.totalPages, rows: data.totalElements, list: data.content });
-          },
-          err => subscriber.error(err)
-        )
-    })
   }
   peliculas(key: any): Observable<any> {
     return this.http.get(`${this.baseUrl}/${key}/peliculas`)
   }
-
  }
 @Injectable({
   providedIn: 'root'
 })
-export class ActoresViewModelService{
-  protected listURL = '/actores';
+export class CategoriasViewModelService{
+  protected listURL = '/categorias';
   protected modo: ModoCRUD = 'list';
   protected listado: Array<any> = [];
   protected elemento: any = {};
   protected idOriginal: any = null;
   constructor(protected notify: NotificationService, protected out: LoggerService,private navigation: NavigationService,
-     protected dao: ActoresDAOService,protected router: Router, public auth:AuthService,) { }
+     protected dao: CategoriasDAOService,protected router: Router, public auth:AuthService,) { }
 
   public get Modo(): ModoCRUD { return this.modo; }
   public get Listado(): Array<any> { return this.listado; }
@@ -122,12 +109,23 @@ export class ActoresViewModelService{
     },
     err => this.notify.add(err.message)
     );
-
   }
   public delete(key: any): void {
     if (!window.confirm('¿Seguro?')) { return; }
     this.dao.remove(key).subscribe(
     data => this.list(),
+    err => this.notify.add(err.message)
+    );
+  }
+
+
+  peliculas(key: any): void {
+    this.dao.peliculas(this.elemento).subscribe(
+    data => {
+    this.elemento.peliculas = this.elemento.peliculas ? this.elemento.peliculas :null
+    this.idOriginal += key;
+    this.modo = 'view';
+    },
     err => this.notify.add(err.message)
     );
   }
@@ -164,26 +162,6 @@ export class ActoresViewModelService{
     break;
     }
   }
-
-  page = 0;
-  totalPages = 0;
-  totalRows = 0;
-  rowsPerPage = 20;
-  load(page: number = -1) {
-    if(page < 0) page = this.page
-    this.dao.page(page, this.rowsPerPage).subscribe(
-      rslt => {
-        this.page = rslt.page;
-        this.totalPages = rslt.pages;
-        this.totalRows = rslt.rows;
-        this.listado = rslt.list;
-        this.modo = 'list';
-      },
-      err => this.notify.add(err.message)
-    )
-  }
-
-
 
 
 }

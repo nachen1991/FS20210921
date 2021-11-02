@@ -18,35 +18,35 @@
     </div>
 
     <div class="form-group col-md-4">
-      <label class="form-label" for="nombre">Nombre:</label>
+      <label class="form-label" for="firstName">Nombre:</label>
       <input
         class="form-control"
-        [class.is-invalid]="nombre.invalid"
+        [class.is-invalid]="firstName.invalid"
         type="text"
-        name="nombre"
-        id="nombre"
-        [(ngModel)]="VM.Elemento.nombre"
-        #nombre="ngModel"
+        name="firstName"
+        id="firstName"
+        [(ngModel)]="VM.Elemento.firstName"
+        #firstName="ngModel"
         required
         minlength="2"
         maxlength="50"
       />
-      <output class="error" [showErrors]="nombre.errors"></output>
+      <output class="error" [showErrors]="firstName.errors"></output>
     </div>
     <div class="form-group col-md-4">
-      <label class="form-label" for="apellidos">Apellidos:</label>
+      <label class="form-label" for="lastName">lastName:</label>
       <input
         class="form-control"
-        [class.is-invalid]="apellidos.invalid"
+        [class.is-invalid]="lastName.invalid"
         type="text"
-        name="apellidos"
-        id="apellidos"
-        [(ngModel)]="VM.Elemento.apellidos"
-        #apellidos="ngModel"
+        name="lastName"
+        id="lastName"
+        [(ngModel)]="VM.Elemento.lastName"
+        #lastName="ngModel"
         minlength="2"
         maxlength="50"
       />
-      <output class="error" [showErrors]="apellidos.errors"></output>
+      <output class="error" [showErrors]="lastName.errors"></output>
     </div>
   </div>
   <div class="form-group">

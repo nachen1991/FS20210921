@@ -13,7 +13,7 @@ export class ActoresComponent implements OnInit {
     return this.vm;
   }
   ngOnInit(): void {
-    this.vm.load();
+    this.vm.list();
   }
 
 }
@@ -31,7 +31,7 @@ export class ActoresListComponent implements OnInit {
     return this.vm;
   }
   ngOnInit(): void {
-    this.vm.load();
+    this.vm.list();
   }
 }
 @Component({

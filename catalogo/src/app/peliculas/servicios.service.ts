@@ -10,11 +10,17 @@ import { AuthService, AUTH_REQUIRED } from '../security';
 
 
 
-
-export class Actores {
-  id: number = 0;
-  firstName: string | null = null;
-  lastName: string | null = null;
+export class Peliculas{
+  filmId: number = 0;
+  title: string | null = null;
+  description: string | null = null;
+  language: string | null = null;
+  languageVO: string | null = null;
+  length: number | null = null;
+  rating: string | null = null;
+  releaseYear: string |null = null;
+  rentalDuration: number |null = null;
+  replacementCost: number | null = null;
   lastUpdate: string | null = null;
 
 }
@@ -46,16 +52,16 @@ export abstract class RESTDAOService<T, K> {
 @Injectable({
   providedIn: 'root'
  })
- export class ActoresDAOService extends RESTDAOService<any, any> {
+ export class PeliculasDAOService extends RESTDAOService<any, any> {
 
   constructor(http: HttpClient) {
-  super(http, 'actores', {
+  super(http, 'peliculas', {
   context: new HttpContext().set(AUTH_REQUIRED, true)
   });
   }
   page(page: number, rows: number = 20): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
     return new Observable(subscriber => {
-      this.http.get<any>(`${this.baseUrl}?page=${page}&size=${rows}&sort=lastName`, this.option)
+      this.http.get<any>(`${this.baseUrl}?page=${page}&size=${rows}&sort=title`, this.option)
         .subscribe(
           data => {
             subscriber.next({ page: data.number, pages: data.totalPages, rows: data.totalElements, list: data.content });
@@ -64,22 +70,28 @@ export abstract class RESTDAOService<T, K> {
         )
     })
   }
-  peliculas(key: any): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${key}/peliculas`)
+  actores(key: any): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${key}/actores`)
+  }
+  categorias(key: any): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${key}/categorias`)
+  }
+  idiomas(key: any): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${key}/idiomas`)
   }
 
  }
 @Injectable({
   providedIn: 'root'
 })
-export class ActoresViewModelService{
-  protected listURL = '/actores';
+export class PeliculasViewModelService{
+  protected listURL = '/peliculas';
   protected modo: ModoCRUD = 'list';
   protected listado: Array<any> = [];
   protected elemento: any = {};
   protected idOriginal: any = null;
   constructor(protected notify: NotificationService, protected out: LoggerService,private navigation: NavigationService,
-     protected dao: ActoresDAOService,protected router: Router, public auth:AuthService,) { }
+     protected dao: PeliculasDAOService,protected router: Router, public auth:AuthService,) { }
 
   public get Modo(): ModoCRUD { return this.modo; }
   public get Listado(): Array<any> { return this.listado; }
@@ -113,16 +125,27 @@ export class ActoresViewModelService{
     data => {
     this.elemento = data;
     this.modo = 'view';
-    this.dao.peliculas(key).subscribe(
+    this.dao.actores(key).subscribe(
       data => {
-      this.elemento.peliculas = data
+      this.elemento.actores = data
       },
       err => this.notify.add(err.message)
       );
+       this.dao.categorias(key).subscribe(
+      data => {
+      this.elemento.categorias = data
+      },
+      err => this.notify.add(err.message)
+      );
+      this.dao.idiomas(key).subscribe(
+        data => {
+        this.elemento.idiomas = data
+        },
+        err => this.notify.add(err.message)
+        );
     },
     err => this.notify.add(err.message)
     );
-
   }
   public delete(key: any): void {
     if (!window.confirm('¿Seguro?')) { return; }
@@ -182,9 +205,5 @@ export class ActoresViewModelService{
       err => this.notify.add(err.message)
     )
   }
-
-
-
-
 }
 

@@ -53,19 +53,8 @@ export abstract class RESTDAOService<T, K> {
   context: new HttpContext().set(AUTH_REQUIRED, true)
   });
   }
-  page(page: number, rows: number = 20): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
-    return new Observable(subscriber => {
-      this.http.get<any>(`${this.baseUrl}?page=${page}&size=${rows}&sort=lastName`, this.option)
-        .subscribe(
-          data => {
-            subscriber.next({ page: data.number, pages: data.totalPages, rows: data.totalElements, list: data.content });
-          },
-          err => subscriber.error(err)
-        )
-    })
-  }
-  peliculas(key: any): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${key}/peliculas`)
+  peliculas(item: any): Observable<any> {
+    return this.http.patch(`${this.baseUrl}/${item.id}`, { peliculas: item.peliculas } )
   }
 
  }
@@ -113,16 +102,9 @@ export class ActoresViewModelService{
     data => {
     this.elemento = data;
     this.modo = 'view';
-    this.dao.peliculas(key).subscribe(
-      data => {
-      this.elemento.peliculas = data
-      },
-      err => this.notify.add(err.message)
-      );
     },
     err => this.notify.add(err.message)
     );
-
   }
   public delete(key: any): void {
     if (!window.confirm('¿Seguro?')) { return; }
@@ -132,6 +114,24 @@ export class ActoresViewModelService{
     );
   }
 
+
+  public megusta(key: any): void {
+    this.dao.get(key).subscribe(
+    data => {
+    this.elemento = data;
+    this.idOriginal += key;
+    this.modo = 'edit';
+    },
+    err => this.notify.add(err.message)
+    );
+  }
+//   megusta(item: any) {
+//     if (item == undefined){
+//            item = 0;
+//     } else if(item.canti != undefined){
+//            item.canti++;
+//     }
+//  }
 
   clear() {
     this.elemento = {};
@@ -164,26 +164,6 @@ export class ActoresViewModelService{
     break;
     }
   }
-
-  page = 0;
-  totalPages = 0;
-  totalRows = 0;
-  rowsPerPage = 20;
-  load(page: number = -1) {
-    if(page < 0) page = this.page
-    this.dao.page(page, this.rowsPerPage).subscribe(
-      rslt => {
-        this.page = rslt.page;
-        this.totalPages = rslt.pages;
-        this.totalRows = rslt.rows;
-        this.listado = rslt.list;
-        this.modo = 'list';
-      },
-      err => this.notify.add(err.message)
-    )
-  }
-
-
 
 
 }

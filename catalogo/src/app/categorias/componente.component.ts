@@ -1,47 +1,47 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { ActoresViewModelService } from './servicios.service';
+import { CategoriasViewModelService } from './servicios.service';
 
 @Component({
-  selector: 'app-actores',
+  selector: 'app-categorias',
   templateUrl: './tmpl-anfitrion.component.html',
   styleUrls: ['./componente.component.scss']
 })
-export class ActoresComponent implements OnInit {
-  constructor(protected vm: ActoresViewModelService) {}
-  public get VM(): ActoresViewModelService {
+export class CategoriasComponent implements OnInit {
+  constructor(protected vm: CategoriasViewModelService) {}
+  public get VM(): CategoriasViewModelService {
     return this.vm;
   }
   ngOnInit(): void {
-    this.vm.load();
+    this.vm.list();
   }
 
 }
 
 @Component({
-  selector: 'app-actores-list',
+  selector: 'app-categorias-list',
   templateUrl: './tmpl-list.component.html',
   styleUrls: ['./componente.component.scss'],
 })
-export class ActoresListComponent implements OnInit {
+export class CategoriasListComponent implements OnInit {
   searchText='';
   public page: number = 0;
-  constructor(protected vm: ActoresViewModelService) {}
-  public get VM(): ActoresViewModelService {
+  constructor(protected vm: CategoriasViewModelService) {}
+  public get VM(): CategoriasViewModelService {
     return this.vm;
   }
   ngOnInit(): void {
-    this.vm.load();
+    this.vm.list();
   }
 }
 @Component({
-  selector: 'app-actores-add',
+  selector: 'app-categorias-add',
   templateUrl: './tmpl-form.component.html',
   styleUrls: ['./componente.component.scss'],
 })
-export class ActoresAddComponent implements OnInit {
-  constructor(protected vm: ActoresViewModelService) {}
-  public get VM(): ActoresViewModelService {
+export class CategoriasAddComponent implements OnInit {
+  constructor(protected vm: CategoriasViewModelService) {}
+  public get VM(): CategoriasViewModelService {
     return this.vm;
   }
   ngOnInit(): void {
@@ -49,18 +49,18 @@ export class ActoresAddComponent implements OnInit {
   }
 }
 @Component({
-  selector: 'app-actores-edit',
+  selector: 'app-categorias-edit',
   templateUrl: './tmpl-form.component.html',
   styleUrls: ['./componente.component.scss'],
 })
-export class ActoresEditComponent implements OnInit, OnDestroy {
+export class CategoriasEditComponent implements OnInit, OnDestroy {
   private obs$: any;
   constructor(
-    protected vm: ActoresViewModelService,
+    protected vm: CategoriasViewModelService,
     protected route: ActivatedRoute,
     protected router: Router
   ) {}
-  public get VM(): ActoresViewModelService {
+  public get VM(): CategoriasViewModelService {
     return this.vm;
   }
   ngOnInit(): void {
@@ -78,18 +78,18 @@ export class ActoresEditComponent implements OnInit, OnDestroy {
   }
 }
 @Component({
-  selector: 'app-actores-view',
+  selector: 'app-categorias-view',
   templateUrl: './tmpl-view.component.html',
   styleUrls: ['./componente.component.scss'],
 })
-export class ActoresViewComponent implements OnInit, OnDestroy {
+export class CategoriasViewComponent implements OnInit, OnDestroy {
   private obs$: any;
   constructor(
-    protected vm: ActoresViewModelService,
+    protected vm: CategoriasViewModelService,
     protected route: ActivatedRoute,
     protected router: Router
   ) {}
-  public get VM(): ActoresViewModelService {
+  public get VM(): CategoriasViewModelService {
     return this.vm;
   }
   ngOnInit(): void {
@@ -107,11 +107,11 @@ export class ActoresViewComponent implements OnInit, OnDestroy {
   }
 }
 
-export const ACTORES_COMPONENTES = [
-  ActoresComponent,
-  ActoresListComponent,
-  ActoresAddComponent,
-  ActoresEditComponent,
-  ActoresViewComponent,
+export const CATEGORIAS_COMPONENTES = [
+  CategoriasComponent,
+  CategoriasListComponent,
+  CategoriasAddComponent,
+  CategoriasEditComponent,
+  CategoriasViewComponent,
 ];
 
