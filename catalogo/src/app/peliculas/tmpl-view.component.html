@@ -14,7 +14,9 @@
             <br />
             <b>Año:</b> {{VM.Elemento.releaseYear}}
             <br />
-            <b>Duracion:</b> {{VM.Elemento.rentalDuration}}
+            <b>Duracion:</b> {{VM.Elemento.length}}
+            <br />
+            <b>Duracion de alquiler:</b> {{VM.Elemento.rentalDuration}}
             <br />
             <b>Rate:</b> {{VM.Elemento.rentalRate}}
             <br />
@@ -28,12 +30,12 @@
            </p>
            <h6>Categorias: </h6>
            <p *ngFor="let item of VM.Elemento.categorias">
-             <a [routerLink]="[item.id,'view']"> {{item.categoria}} </a>
+             {{item}}
               <br />
             </p>
             <h6>Idiomas: </h6>
             <p *ngFor="let item of VM.Elemento.idiomas">
-              <a [routerLink]="[item.laguageId,'view']"> {{item.idioma}} </a>
+              {{item}}
                <br />
 
              </p>

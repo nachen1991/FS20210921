@@ -1,15 +1,15 @@
-<h1>Nuevo actor</h1>
+<h1>Formulario de peliculas</h1>
 <form #miForm="ngForm">
   <div class="form-row">
     <div class="form-group col-md-2">
-      <label class="form-label" for="id">Código:</label>
+      <label class="form-label" for="filmId">Código:</label>
       <input
         class="form-control"
         [class.is-invalid]="id.invalid && miForm.dirty"
         type="number"
-        name="id"
-        id="id"
-        [(ngModel)]="VM.Elemento.id"
+        name="filmId"
+        id="filmId"
+        [(ngModel)]="VM.Elemento.filmId"
         #id="ngModel"
         required
         min="0"
@@ -34,43 +34,72 @@
       <output class="error" [showErrors]="title.errors"></output>
     </div>
     <div class="form-group col-md-4">
-      <label class="form-label" for="description">Descripcion:</label>
-      <input
-        class="form-control"
+      <label class="form-label" for="description"><b>Descripción: </b></label>
+      <textarea
         [class.is-invalid]="description.invalid"
         type="text"
         name="description"
         id="description"
         [(ngModel)]="VM.Elemento.description"
         #description="ngModel"
+        maxduracion="1000"
+        rows="20"
+        cols="160"
+      ></textarea>
+      <output
+        class="invalid-feedback"
+        [showErrors]="description.errors"
+      ></output>
+    </div>
+    <div class="form-group col-md-4">
+      <label class="form-label" for="releaseYear">Año de lanzamiento:</label>
+      <input
+        class="form-control"
+        [class.is-invalid]="releaseYear.invalid"
+        type="number"
+        name="releaseYear"
+        id="releaseYear"
+        [(ngModel)]="VM.Elemento.releaseYear"
+        #releaseYear="ngModel"
+        min="1900"
+        max="2021"
+      />
+      <output class="error" [showErrors]="releaseYear.errors"></output>
+    </div>
+    <div class="form-group col-md-4">
+      <label class="form-label" for="length">Duracion:</label>
+      <input
+        class="form-control"
+        [class.is-invalid]="length.invalid"
+        type="number"
+        name="length"
+        id="length"
+        [(ngModel)]="VM.Elemento.length"
+        #length="ngModel"
         minlength="2"
         maxlength="500"
       />
-      <output class="error" [showErrors]="description.errors"></output>
+      <output class="error" [showErrors]="length.errors"></output>
     </div>
     <div class="form-group col-md-4">
-      <label class="form-label" for="description">Idiomas:</label>
-      <select
-        class="form-control form-select"
-        name="idiomas"
-        id="idiomas"
-        [(ngModel)]="VM.Elemento.idiomas"
-        #tratamiento="ngModel"
-      >
-        <option>Sr.</option>
-        <option>Sra.</option>
-        <option>Srta.</option>
-        <option>Dr.</option>
-        <option>Dra.</option>
-        <option>Ilmo.</option>
-        <option>Ilma.</option>
-        <option>Excmo.</option>
-        <option>Excma.</option>
+      <label class="form-label" for="languageId">Idiomas:</label>
+       <select class="form-control form-select"
+       name="languageId"
+       id="languageId"
+       [(ngModel)]="VM.Elemento.languageId">
+        <option value="">--Elige opción--</option>
+        <option *ngFor="let p of VM.idiomas" [value]="p.languageId">
+          {{ p.idioma }}
+        </option>
       </select>
-      <output class="error" [showErrors]=".errors"></output>
     </div>
   </div>
   <div class="form-group">
-    <app-form-buttons (send)="VM.send()" (delete)="VM.delete(VM.Elemento.id)" [send-disabled]="miForm.invalid" (cancel)="VM.cancel()"></app-form-buttons>
+    <app-form-buttons
+      (send)="VM.send()"
+      (delete)="VM.delete(VM.Elemento.id)"
+      [send-disabled]="miForm.invalid"
+      (cancel)="VM.cancel()"
+    ></app-form-buttons>
   </div>
 </form>

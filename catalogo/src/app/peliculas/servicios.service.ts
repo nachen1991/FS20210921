@@ -48,7 +48,18 @@ export abstract class RESTDAOService<T, K> {
  return this.http.delete<T>(this.baseUrl + '/' + id, this.option);
  }
 }
+@Injectable({
+  providedIn: 'root'
+ })
+export class IdiomasDAOService extends RESTDAOService<any, any> {
 
+  constructor(http: HttpClient) {
+  super(http, 'idiomas', {
+  context: new HttpContext().set(AUTH_REQUIRED, true)
+  });
+  }
+
+ }
 @Injectable({
   providedIn: 'root'
  })
@@ -88,10 +99,13 @@ export class PeliculasViewModelService{
   protected listURL = '/peliculas';
   protected modo: ModoCRUD = 'list';
   protected listado: Array<any> = [];
+  public idiomas: Array<any> = [];
   protected elemento: any = {};
   protected idOriginal: any = null;
   constructor(protected notify: NotificationService, protected out: LoggerService,private navigation: NavigationService,
-     protected dao: PeliculasDAOService,protected router: Router, public auth:AuthService,) { }
+     protected dao: PeliculasDAOService,protected router: Router, public auth:AuthService, daoIdiomas: IdiomasDAOService) {
+       daoIdiomas.query().subscribe(data => this.idiomas = data);
+      }
 
   public get Modo(): ModoCRUD { return this.modo; }
   public get Listado(): Array<any> { return this.listado; }
