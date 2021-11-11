@@ -36,12 +36,12 @@ spring:
           - Path=/demos/**
         filters:
           - RewritePath=/demos, /
-      - id: serv-contactos
-        uri: lb://contactos-service
+      - id: serv-autentication
         predicates:
-          - Path=/contactos/**
+          - Path=/auth/**
+        uri: lb://autentication-service
         filters:
-          - RewritePath=/contactos, /api/contactos
+          - RewritePath=/auth, /
       - id: serv-search
         uri: https://www.google.com/
         predicates:

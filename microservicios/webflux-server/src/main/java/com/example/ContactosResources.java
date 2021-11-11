@@ -80,7 +80,7 @@ public class ContactosResources {
 	static {
 		try {
 			store = (new ObjectMapper()).readValue(
-					new URL("file:C:\\curso\\FS20210921\\microservicios\\webflux-server\\src\\main\\resources\\contactos.json"), 
+					new URL("file:C:\\Users\\0018647\\Documents\\curso fullstack\\workspace\\FS20210921\\microservicios\\webflux-server\\src\\main\\resources\\contactos.json"), 
 					new TypeReference<List<Contacto>>() {});
 			store.sort((a, b) -> a.getId() - b.getId());
 		} catch (JsonParseException e) {

@@ -7,7 +7,8 @@ export const environment = {
   ERROR_LEVEL: 99,
   securityApiURL: 'http://localhost:8091/',
  // apiURL: 'http://localhost:4321/api/',
-  apiURL: 'http://localhost:8080/catalogo/',
+ apiURL: 'http://localhost:8080/catalogo/',
+
 
 };
 
